@@ -39,7 +39,7 @@ const NavLink: FC<NavLinkProps> = (props) => {
 
 const Navigation: FC = () => {
   return (
-    <nav className="fixed">
+    <nav>
       <NavLink href="/" className="top-6 left-6">
         Home
       </NavLink>
