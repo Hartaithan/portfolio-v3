@@ -1,25 +1,6 @@
-type ClassValue =
-  | ClassArray
-  | ClassDictionary
-  | string
-  | number
-  | null
-  | boolean
-  | undefined;
-type ClassDictionary = Record<string, any>;
-type ClassArray = ClassValue[];
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
 
-export const cn = (...inputs: ClassValue[]): string => {
-  let i = 0;
-  let tmp;
-  let str = "";
-  let len = inputs.length;
-  for (; i < len; i++) {
-    if ((tmp = inputs[i])) {
-      if (typeof tmp === "string") {
-        str += (str && " ") + tmp;
-      }
-    }
-  }
-  return str;
+export const cn = (...inputs: ClassValue[]) => {
+  return twMerge(clsx(inputs));
 };
