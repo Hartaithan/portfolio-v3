@@ -7,7 +7,7 @@ import { template } from "@/constants/animation";
 const Template: FC<PropsWithChildren> = (props) => {
   const { children } = props;
   return (
-    <motion.main className="relative size-full z-0" {...template}>
+    <motion.main className="size-full" {...template}>
       {children}
     </motion.main>
   );

@@ -5,7 +5,7 @@ export const metadata: Metadata = { title: "Contact" };
 
 const Contact: FC = () => {
   return (
-    <div className="size-full flex justify-center items-center">
+    <div className="flex size-full items-center justify-center">
       <h1 className="font-bold">Contact</h1>
     </div>
   );

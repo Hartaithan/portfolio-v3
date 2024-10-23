@@ -1,3 +1,6 @@
 {
-  "bracketSameLine": true
+  "bracketSameLine": true,
+  "tailwindFunctions": ["cn"],
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "tailwindAttributes": ["styles", "classes"]
 }
