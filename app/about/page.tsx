@@ -4,11 +4,7 @@ import type { FC } from "react";
 export const metadata: Metadata = { title: "About" };
 
 const About: FC = () => {
-  return (
-    <div className="flex size-full items-center justify-center">
-      <h1 className="font-bold">About</h1>
-    </div>
-  );
+  return <h1 className="font-bold">About</h1>;
 };
 
 export default About;

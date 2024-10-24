@@ -1,14 +1,9 @@
 import type { Metadata } from "next";
 import type { FC } from "react";
+import HomeSection from "@/sections/home";
 
 export const metadata: Metadata = { title: "Home | Hartaithan." };
 
-const Home: FC = () => {
-  return (
-    <div className="flex size-full items-center justify-center">
-      <h1 className="font-bold">Home</h1>
-    </div>
-  );
-};
+const Home: FC = () => <HomeSection />;
 
 export default Home;
