@@ -2,7 +2,7 @@ import type { FC } from "react";
 import type { IconProps } from "@/models/icon";
 
 const IconHH: FC<IconProps> = (props) => {
-  const { width, height, color = "#FFFFFF", ...rest } = props;
+  const { width, height, ...rest } = props;
   return (
     <svg
       width={width}
@@ -27,7 +27,6 @@ const IconHH: FC<IconProps> = (props) => {
             <g clipPath="url(#clipPath18)">
               <g clipPath="url(#clipPath24)">
                 <path
-                  fill={color}
                   fillOpacity="1"
                   fillRule="nonzero"
                   stroke="none"
