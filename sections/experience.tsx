@@ -12,7 +12,7 @@ import type {
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/utils/styles";
 import { swipeConfidenceThreshold, swipePower, wrap } from "@/utils/carousel";
-import type { Experience } from "@/models/experience";
+import { experience } from "@/constants/experience";
 import type { CarouselProps, PaginateHandler } from "@/models/carousel";
 
 interface SlideProps {
@@ -42,33 +42,6 @@ const transition: Transition = {
 };
 
 const dragConstraints: Partial<BoundingBox> = { left: 0, right: 0 };
-
-const experience: Experience[] = [
-  {
-    title: "Dvigus",
-    location: "Russia, Moscow",
-    position: "Frontend Developer",
-    tags: ["React", "Tracking Scripts"],
-    from: "10.2023",
-    to: "present",
-  },
-  {
-    title: "Qwantum",
-    location: "Russia, Yakutsk",
-    position: "Frontend Developer",
-    tags: ["React", "Next.JS", "React Native"],
-    from: "06.2022",
-    to: "08.2023",
-  },
-  {
-    title: "AEB IT",
-    location: "Russia, Yakutsk",
-    position: "Frontend Developer",
-    tags: ["React", "Next.JS"],
-    from: "05.2021",
-    to: "05.2022",
-  },
-];
 
 const Arrow: FC<ComponentPropsWithoutRef<"button">> = (props) => {
   const { className, ...rest } = props;
