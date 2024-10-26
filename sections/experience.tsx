@@ -3,19 +3,17 @@
 import type { ComponentPropsWithoutRef, FC } from "react";
 import { useCallback } from "react";
 import { useState } from "react";
-import type { BoundingBox, PanInfo, Transition, Variants } from "framer-motion";
+import type {
+  BoundingBox,
+  DragHandlers,
+  Transition,
+  Variants,
+} from "framer-motion";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/utils/styles";
 import { swipeConfidenceThreshold, swipePower, wrap } from "@/utils/carousel";
 import type { Experience } from "@/models/experience";
-
-type PaginateHandler = (dir: number) => void;
-
-interface CarouselProps {
-  page: number;
-  direction: number;
-  paginate: PaginateHandler;
-}
+import type { CarouselProps, PaginateHandler } from "@/models/carousel";
 
 interface SlideProps {
   index: number;
@@ -116,11 +114,8 @@ const Carousel: FC<CarouselProps> = (props) => {
   const { page, direction, paginate } = props;
   const index = wrap(0, experience.length, page);
 
-  const handleDragEnd = useCallback(
-    (
-      e: MouseEvent | TouchEvent | PointerEvent,
-      { offset, velocity }: PanInfo,
-    ) => {
+  const handleDragEnd: NonNullable<DragHandlers["onDragEnd"]> = useCallback(
+    (_, { offset, velocity }) => {
       const swipe = swipePower(offset.x, velocity.x);
       if (swipe < -swipeConfidenceThreshold) paginate(1);
       else if (swipe > swipeConfidenceThreshold) paginate(-1);
@@ -152,8 +147,8 @@ const Carousel: FC<CarouselProps> = (props) => {
 const ExperienceSection: FC = () => {
   const [[page, direction], setPage] = useState([0, 0]);
 
-  const paginate = useCallback(
-    (dir: number) => setPage([page + dir, dir]),
+  const paginate: PaginateHandler = useCallback(
+    (dir) => setPage([page + dir, dir]),
     [page],
   );
 
