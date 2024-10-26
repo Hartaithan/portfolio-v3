@@ -1,19 +1,24 @@
 "use client";
 
 import type { ComponentPropsWithoutRef, FC } from "react";
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import { useState } from "react";
-import type { PanInfo, Transition, Variants } from "framer-motion";
+import type { BoundingBox, PanInfo, Transition, Variants } from "framer-motion";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/utils/styles";
 import { swipeConfidenceThreshold, swipePower, wrap } from "@/utils/carousel";
+import type { Experience } from "@/models/experience";
 
 type PaginateHandler = (dir: number) => void;
 
-interface SlideProps {
+interface CarouselProps {
   page: number;
   direction: number;
   paginate: PaginateHandler;
+}
+
+interface SlideProps {
+  index: number;
 }
 
 const variants: Variants = {
@@ -35,10 +40,12 @@ const variants: Variants = {
 
 const transition: Transition = {
   x: { type: "spring", stiffness: 300, damping: 30 },
-  opacity: { duration: 0.8 },
+  opacity: { duration: 0.2 },
 };
 
-const experience = [
+const dragConstraints: Partial<BoundingBox> = { left: 0, right: 0 };
+
+const experience: Experience[] = [
   {
     title: "Dvigus",
     location: "Russia, Moscow",
@@ -80,9 +87,34 @@ const Arrow: FC<ComponentPropsWithoutRef<"button">> = (props) => {
 };
 
 const Slide: FC<SlideProps> = (props) => {
+  const { index } = props;
+  const slide = experience[index];
+  const { title, location, from, to, tags } = slide;
+  return (
+    <>
+      <div className="flex items-center gap-x-2">
+        <h1 className="font-semibold">{title}</h1>
+        <p className="text-sm leading-[normal] text-neutral-200">{location}</p>
+      </div>
+      <p className="mt-1 text-sm">
+        {from} - {to}
+      </p>
+      <div className="mt-2 flex flex-wrap gap-x-2 gap-y-1">
+        {tags.map((tag) => (
+          <p
+            key={tag}
+            className="rounded bg-neutral-800 px-2 py-0.5 text-sm font-medium hover:bg-neutral-700">
+            {tag}
+          </p>
+        ))}
+      </div>
+    </>
+  );
+};
+
+const Carousel: FC<CarouselProps> = (props) => {
   const { page, direction, paginate } = props;
   const index = wrap(0, experience.length, page);
-  const slide = experience[index];
 
   const handleDragEnd = useCallback(
     (
@@ -97,38 +129,23 @@ const Slide: FC<SlideProps> = (props) => {
   );
 
   return (
-    <motion.div
-      key={page}
-      className="mt-3 flex h-1 flex-1 flex-col justify-center"
-      custom={direction}
-      variants={variants}
-      initial="enter"
-      animate="center"
-      exit="exit"
-      drag="x"
-      transition={transition}
-      dragConstraints={{ left: 0, right: 0 }}
-      dragElastic={1}
-      onDragEnd={handleDragEnd}>
-      <div className="flex items-center gap-x-2">
-        <h1 className="font-semibold">{slide.title}</h1>
-        <p className="text-sm leading-[normal] text-neutral-200">
-          {slide.location}
-        </p>
-      </div>
-      <p className="mt-1 text-sm">
-        {slide.from} - {slide.to}
-      </p>
-      <div className="mt-2 flex flex-wrap gap-x-2 gap-y-1">
-        {slide.tags.map((tag) => (
-          <p
-            key={tag}
-            className="rounded bg-neutral-800 px-2 py-0.5 text-sm font-medium hover:bg-neutral-700">
-            {tag}
-          </p>
-        ))}
-      </div>
-    </motion.div>
+    <AnimatePresence initial={false} mode="popLayout" custom={direction}>
+      <motion.div
+        key={page}
+        className="flex h-1 flex-1 flex-col justify-center"
+        custom={direction}
+        variants={variants}
+        initial="enter"
+        animate="center"
+        exit="exit"
+        drag="x"
+        transition={transition}
+        dragConstraints={dragConstraints}
+        dragElastic={1}
+        onDragEnd={handleDragEnd}>
+        <Slide index={index} />
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
@@ -141,18 +158,16 @@ const ExperienceSection: FC = () => {
   );
 
   return (
-    <AnimatePresence initial={false} mode="wait" custom={direction}>
-      <div className="relative flex min-h-40 flex-col overflow-hidden rounded-lg bg-neutral-900 px-6 py-5">
-        <div className="flex justify-between">
-          <h1 className="text-xl font-semibold">Experience</h1>
-          <div className="flex gap-x-3">
-            <Arrow className="rotate-180" onClick={() => paginate(-1)} />
-            <Arrow onClick={() => paginate(1)} />
-          </div>
+    <div className="relative flex min-h-40 flex-col overflow-hidden rounded-lg bg-neutral-900 px-6 py-5">
+      <div className="mb-3 flex justify-between">
+        <h1 className="text-xl font-semibold">Experience</h1>
+        <div className="flex gap-x-3">
+          <Arrow className="rotate-180" onClick={() => paginate(-1)} />
+          <Arrow onClick={() => paginate(1)} />
         </div>
-        <Slide page={page} direction={direction} paginate={paginate} />
       </div>
-    </AnimatePresence>
+      <Carousel page={page} direction={direction} paginate={paginate} />
+    </div>
   );
 };
 
