@@ -1,4 +1,5 @@
 import ExperienceSection from "@/sections/experience";
+import SkillsSection from "@/sections/skills";
 import type { Metadata } from "next";
 import type { FC } from "react";
 
@@ -24,7 +25,7 @@ const About: FC = () => {
         </p>
       </div>
       <ExperienceSection />
-      <div className="rounded-lg bg-neutral-900 px-6 py-5">TODO: Skills</div>
+      <SkillsSection />
     </div>
   );
 };
