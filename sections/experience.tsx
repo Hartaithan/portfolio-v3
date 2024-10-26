@@ -14,10 +14,7 @@ import { cn } from "@/utils/styles";
 import { swipeConfidenceThreshold, swipePower, wrap } from "@/utils/carousel";
 import { experience } from "@/constants/experience";
 import type { CarouselProps, PaginateHandler } from "@/models/carousel";
-
-interface SlideProps {
-  index: number;
-}
+import ExperienceSlide from "@/components/experience-slide";
 
 const variants: Variants = {
   enter: (direction: number) => ({
@@ -57,32 +54,6 @@ const Arrow: FC<ComponentPropsWithoutRef<"button">> = (props) => {
   );
 };
 
-const Slide: FC<SlideProps> = (props) => {
-  const { index } = props;
-  const slide = experience[index];
-  const { title, location, from, to, tags } = slide;
-  return (
-    <>
-      <div className="flex items-center gap-x-2">
-        <h1 className="font-semibold">{title}</h1>
-        <p className="text-sm leading-[normal] text-neutral-200">{location}</p>
-      </div>
-      <p className="mt-1 text-sm">
-        {from} - {to}
-      </p>
-      <div className="mt-2 flex flex-wrap gap-x-2 gap-y-1">
-        {tags.map((tag) => (
-          <p
-            key={tag}
-            className="rounded bg-neutral-800 px-2 py-0.5 text-sm font-medium hover:bg-neutral-700">
-            {tag}
-          </p>
-        ))}
-      </div>
-    </>
-  );
-};
-
 const Carousel: FC<CarouselProps> = (props) => {
   const { page, direction, paginate } = props;
   const index = wrap(0, experience.length, page);
@@ -111,7 +82,7 @@ const Carousel: FC<CarouselProps> = (props) => {
         dragConstraints={dragConstraints}
         dragElastic={1}
         onDragEnd={handleDragEnd}>
-        <Slide index={index} />
+        <ExperienceSlide index={index} />
       </motion.div>
     </AnimatePresence>
   );
