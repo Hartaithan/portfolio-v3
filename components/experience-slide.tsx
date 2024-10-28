@@ -2,7 +2,10 @@
 
 import type { FC } from "react";
 import { experience } from "@/constants/experience";
-import { getExperienceDuration } from "@/utils/experience";
+import {
+  formatExperienceDate,
+  getExperienceDuration,
+} from "@/utils/experience";
 
 interface SlideProps {
   index: number;
@@ -21,7 +24,7 @@ const ExperienceSlide: FC<SlideProps> = (props) => {
       </div>
       <div className="mt-1 flex items-center gap-x-2">
         <p className="text-sm">
-          {from} - {to}
+          {formatExperienceDate(from)} - {formatExperienceDate(to)}
         </p>
         <p className="text-xs leading-[normal]">{duration}</p>
       </div>

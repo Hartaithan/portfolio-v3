@@ -1,3 +1,4 @@
+import { months } from "@/constants/dates";
 import { pluralize } from "@/utils/pluralize";
 
 const getMonths = (from: string) => {
@@ -17,4 +18,10 @@ export const getExperienceDuration = (from: string, to: string): string => {
   if (months > 0) parts.push(pluralize(years, "month"));
 
   return parts.join(", ") || "";
+};
+
+export const formatExperienceDate = (value: string) => {
+  if (value === "present") return value;
+  const [month, year] = value.split(".").map(Number);
+  return `${months[month]} ${year}`;
 };
