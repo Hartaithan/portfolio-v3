@@ -17,3 +17,7 @@ body {
   color: var(--foreground);
   background: var(--background);
 }
+
+#slide[data-motion-pop-id] {
+  position: fixed !important;
+}
