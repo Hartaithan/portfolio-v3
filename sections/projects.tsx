@@ -3,21 +3,22 @@
 import type { FC } from "react";
 import { useCallback, useState } from "react";
 import type { CarouselProps, PaginateHandler } from "@/models/carousel";
-import { swipeConfidenceThreshold, swipePower } from "@/utils/carousel";
+import { swipeConfidenceThreshold, swipePower, wrap } from "@/utils/carousel";
 import type {
   BoundingBox,
   DragHandlers,
   Transition,
   Variants,
 } from "framer-motion";
-import { motion, AnimatePresence, wrap } from "framer-motion";
-
-const projects = [1, 2, 3, 4, 5, 6];
+import { motion, AnimatePresence } from "framer-motion";
+import ProjectSlide from "@/components/project-slide";
+import { projects } from "@/constants/projects";
 
 const variants: Variants = {
   enter: (direction: number) => ({
     x: direction > 0 ? 1000 : -1000,
     opacity: 0,
+    transition: { duration: 0.2 },
   }),
   center: {
     zIndex: 1,
@@ -28,6 +29,7 @@ const variants: Variants = {
     zIndex: 0,
     x: direction < 0 ? 1000 : -1000,
     opacity: 0,
+    transition: { duration: 0.2 },
   }),
 };
 
@@ -52,10 +54,11 @@ const Carousel: FC<CarouselProps> = (props) => {
   );
 
   return (
-    <AnimatePresence initial={false} mode="popLayout" custom={direction}>
+    <AnimatePresence initial={false} mode="wait" custom={direction}>
       <motion.div
         id="slide"
         key={page}
+        className="relative flex h-full w-7/12 flex-col items-center justify-center"
         custom={direction}
         variants={variants}
         initial="enter"
@@ -66,7 +69,7 @@ const Carousel: FC<CarouselProps> = (props) => {
         dragConstraints={dragConstraints}
         dragElastic={1}
         onDragEnd={handleDragEnd}>
-        <pre>hello world {index}</pre>
+        <ProjectSlide index={index} />
       </motion.div>
     </AnimatePresence>
   );

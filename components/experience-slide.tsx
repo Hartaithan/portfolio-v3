@@ -7,11 +7,11 @@ import {
   getExperienceDuration,
 } from "@/utils/experience";
 
-interface SlideProps {
+interface Props {
   index: number;
 }
 
-const ExperienceSlide: FC<SlideProps> = (props) => {
+const ExperienceSlide: FC<Props> = (props) => {
   const { index } = props;
   const slide = experience[index];
   const { title, location, from, to, tags } = slide;
