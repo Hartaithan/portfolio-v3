@@ -1,7 +1,7 @@
-export type ProjectIcon = "google-play" | "external" | "github";
+import type { Icon } from "@/models/icon";
 
 export interface ProjectLink {
-  icon: ProjectIcon;
+  icon: Icon;
   href: string;
 }
 

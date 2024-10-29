@@ -1,40 +1,34 @@
 import type { ContactItem } from "@/models/contact";
-import IconGithub from "@/icons/github";
-import IconGooglePlay from "@/icons/google-play";
-import IconHH from "@/icons/hh";
-import IconLinkedIn from "@/icons/linked-in";
-import IconMail from "@/icons/mail";
-import IconTelegram from "@/icons/telegram";
 
 export const contacts: ContactItem[] = [
   {
     id: "mail",
-    Icon: IconMail,
+    icon: "mail",
     href: "mailto:hartaithan@gmail.com",
   },
   {
     id: "github",
-    Icon: IconGithub,
+    icon: "github",
     href: "https://github.com/Hartaithan",
   },
   {
     id: "linked-in",
-    Icon: IconLinkedIn,
+    icon: "linked-in",
     href: "https://www.linkedin.com/in/vladimir-stepanov-605b93222/",
   },
   {
     id: "telegram",
-    Icon: IconTelegram,
+    icon: "telegram",
     href: "https://t.me/hartaithan",
   },
   {
     id: "hh",
-    Icon: IconHH,
+    icon: "hh",
     href: "https://hh.ru/resume/c2d8f9a5ff0959ecb30039ed1f6f7933457473",
   },
   {
     id: "google-play",
-    Icon: IconGooglePlay,
+    icon: "google-play",
     href: "https://play.google.com/store/apps/dev?id=4716065440707220964",
   },
 ];

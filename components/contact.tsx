@@ -1,9 +1,10 @@
 import type { ContactItem } from "@/models/contact";
 import { cn } from "@/utils/styles";
 import type { FC } from "react";
+import Icon from "@/components/icon";
 
 const Contact: FC<ContactItem> = (props) => {
-  const { id, href, Icon, ...rest } = props;
+  const { id, href, icon, ...rest } = props;
   return (
     <a
       key={id}
@@ -17,7 +18,10 @@ const Contact: FC<ContactItem> = (props) => {
       href={href}
       target="_blank"
       {...rest}>
-      <Icon className="size-20 fill-white transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:fill-black" />
+      <Icon
+        icon={icon}
+        className="size-20 fill-white transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:fill-black"
+      />
     </a>
   );
 };

@@ -1,22 +1,12 @@
 import { projects } from "@/constants/projects";
-import IconGithub from "@/icons/github";
-import IconGooglePlay from "@/icons/google-play";
-import IconLink from "@/icons/link";
-import type { IconProps } from "@/models/icon";
-import type { ProjectIcon } from "@/models/project";
 import { cn } from "@/utils/styles";
 import Image from "next/image";
 import type { FC } from "react";
+import Icon from "@/components/icon";
 
 interface Props {
   index: number;
 }
-
-export const icons: Record<ProjectIcon, FC<IconProps>> = {
-  "google-play": IconGooglePlay,
-  external: IconLink,
-  github: IconGithub,
-};
 
 const ProjectSlide: FC<Props> = (props) => {
   const { index } = props;
@@ -51,14 +41,11 @@ const ProjectSlide: FC<Props> = (props) => {
           ))}
         </div>
         <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
-          {links.map((link) => {
-            const Icon = icons[link.icon];
-            return (
-              <a key={link.icon} href={link.href} target="_blank">
-                <Icon className="size-5 fill-white" />
-              </a>
-            );
-          })}
+          {links.map((link) => (
+            <a key={link.icon} href={link.href} target="_blank">
+              <Icon icon={link.icon} className="size-5 fill-white" />
+            </a>
+          ))}
         </div>
       </div>
       <div
