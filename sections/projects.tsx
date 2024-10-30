@@ -8,6 +8,7 @@ import { projects } from "@/constants/projects";
 import { useCarousel } from "@/hooks/useCarousel";
 import { cn } from "@/utils/styles";
 import IconArrow from "@/icons/arrow";
+import Pagination from "@/components/pagination";
 
 const variants: Variants = {
   enter: (direction: number) => ({
@@ -50,9 +51,8 @@ const Arrow: FC<ComponentPropsWithoutRef<"button">> = (props) => {
 };
 
 const ProjectsSection: FC = () => {
-  const { page, direction, index, paginate, handleDragEnd } = useCarousel({
-    data: projects,
-  });
+  const { page, direction, index, paginate, handlePage, handleDragEnd } =
+    useCarousel({ data: projects });
   return (
     <div className="flex size-full items-center justify-center overflow-hidden">
       <Arrow className="left-4 rotate-180" onClick={() => paginate(-1)} />
@@ -75,6 +75,12 @@ const ProjectsSection: FC = () => {
           <ProjectSlide index={index} />
         </motion.div>
       </AnimatePresence>
+      <Pagination
+        className="absolute bottom-6"
+        length={projects.length}
+        page={index}
+        handlePage={handlePage}
+      />
     </div>
   );
 };

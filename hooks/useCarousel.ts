@@ -6,7 +6,9 @@ interface CarouselParams<T> {
   data: T[];
 }
 
-type PaginateHandler = (dir: number) => void;
+export type PaginateHandler = (dir: number) => void;
+
+export type PageHandler = (page: number) => void;
 
 const swipeConfidenceThreshold = 10000;
 
@@ -19,8 +21,17 @@ export const useCarousel = <T>(params: CarouselParams<T>) => {
   const index = wrap(0, data.length, page);
 
   const paginate: PaginateHandler = useCallback(
-    (dir) => setPage([page + dir, dir]),
-    [page],
+    (dir) => setPage(([page]) => [page + dir, dir]),
+    [],
+  );
+
+  const handlePage: PageHandler = useCallback(
+    (page) =>
+      setPage((prev) => {
+        const dir = prev[0] > page ? -1 : 1;
+        return [page, dir];
+      }),
+    [setPage],
   );
 
   const handleDragEnd: NonNullable<DragHandlers["onDragEnd"]> = useCallback(
@@ -32,5 +43,12 @@ export const useCarousel = <T>(params: CarouselParams<T>) => {
     [paginate],
   );
 
-  return { page, direction, index, paginate, handleDragEnd };
+  return {
+    page,
+    direction,
+    index,
+    paginate,
+    handlePage,
+    handleDragEnd,
+  };
 };
