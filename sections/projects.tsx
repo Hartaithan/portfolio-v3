@@ -1,11 +1,13 @@
 "use client";
 
-import type { FC } from "react";
+import type { ComponentPropsWithoutRef, FC } from "react";
 import type { BoundingBox, Transition, Variants } from "framer-motion";
 import { motion, AnimatePresence } from "framer-motion";
 import ProjectSlide from "@/components/project-slide";
 import { projects } from "@/constants/projects";
 import { useCarousel } from "@/hooks/useCarousel";
+import { cn } from "@/utils/styles";
+import IconArrow from "@/icons/arrow";
 
 const variants: Variants = {
   enter: (direction: number) => ({
@@ -33,12 +35,28 @@ const transition: Transition = {
 
 const dragConstraints: Partial<BoundingBox> = { left: 0, right: 0 };
 
+const Arrow: FC<ComponentPropsWithoutRef<"button">> = (props) => {
+  const { className, ...rest } = props;
+  return (
+    <button
+      className={cn(
+        "absolute top-1/2 z-10 size-16 -translate-y-1/2 p-3",
+        className,
+      )}
+      {...rest}>
+      <IconArrow className="size-full fill-white" />
+    </button>
+  );
+};
+
 const ProjectsSection: FC = () => {
-  const { page, direction, index, handleDragEnd } = useCarousel({
+  const { page, direction, index, paginate, handleDragEnd } = useCarousel({
     data: projects,
   });
   return (
     <div className="flex size-full items-center justify-center overflow-hidden">
+      <Arrow className="left-4 rotate-180" onClick={() => paginate(-1)} />
+      <Arrow className="right-4" onClick={() => paginate(1)} />
       <AnimatePresence initial={false} mode="wait" custom={direction}>
         <motion.div
           id="slide"
