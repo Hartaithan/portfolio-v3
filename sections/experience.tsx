@@ -1,20 +1,12 @@
 "use client";
 
 import type { ComponentPropsWithoutRef, FC } from "react";
-import { useCallback } from "react";
-import { useState } from "react";
-import type {
-  BoundingBox,
-  DragHandlers,
-  Transition,
-  Variants,
-} from "framer-motion";
+import type { BoundingBox, Transition, Variants } from "framer-motion";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/utils/styles";
-import { swipeConfidenceThreshold, swipePower, wrap } from "@/utils/carousel";
 import { experience } from "@/constants/experience";
-import type { CarouselProps, PaginateHandler } from "@/models/carousel";
 import ExperienceSlide from "@/components/experience-slide";
+import { useCarousel } from "@/hooks/useCarousel";
 
 const variants: Variants = {
   enter: (direction: number) => ({
@@ -54,48 +46,10 @@ const Arrow: FC<ComponentPropsWithoutRef<"button">> = (props) => {
   );
 };
 
-const Carousel: FC<CarouselProps> = (props) => {
-  const { page, direction, paginate } = props;
-  const index = wrap(0, experience.length, page);
-
-  const handleDragEnd: NonNullable<DragHandlers["onDragEnd"]> = useCallback(
-    (_, { offset, velocity }) => {
-      const swipe = swipePower(offset.x, velocity.x);
-      if (swipe < -swipeConfidenceThreshold) paginate(1);
-      else if (swipe > swipeConfidenceThreshold) paginate(-1);
-    },
-    [paginate],
-  );
-
-  return (
-    <AnimatePresence initial={false} mode="popLayout" custom={direction}>
-      <motion.div
-        key={page}
-        className="flex h-1 flex-1 flex-col justify-center"
-        custom={direction}
-        variants={variants}
-        initial="enter"
-        animate="center"
-        exit="exit"
-        drag="x"
-        transition={transition}
-        dragConstraints={dragConstraints}
-        dragElastic={1}
-        onDragEnd={handleDragEnd}>
-        <ExperienceSlide index={index} />
-      </motion.div>
-    </AnimatePresence>
-  );
-};
-
 const ExperienceSection: FC = () => {
-  const [[page, direction], setPage] = useState([0, 0]);
-
-  const paginate: PaginateHandler = useCallback(
-    (dir) => setPage([page + dir, dir]),
-    [page],
-  );
-
+  const { page, direction, index, paginate, handleDragEnd } = useCarousel({
+    data: experience,
+  });
   return (
     <div className="relative flex min-h-40 flex-col overflow-hidden rounded-lg bg-neutral-900 px-6 py-5">
       <div className="mb-3 flex justify-between">
@@ -105,7 +59,23 @@ const ExperienceSection: FC = () => {
           <Arrow onClick={() => paginate(1)} />
         </div>
       </div>
-      <Carousel page={page} direction={direction} paginate={paginate} />
+      <AnimatePresence initial={false} mode="popLayout" custom={direction}>
+        <motion.div
+          key={page}
+          className="flex h-1 flex-1 flex-col justify-center"
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          drag="x"
+          transition={transition}
+          dragConstraints={dragConstraints}
+          dragElastic={1}
+          onDragEnd={handleDragEnd}>
+          <ExperienceSlide index={index} />
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };
