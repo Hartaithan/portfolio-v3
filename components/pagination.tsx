@@ -1,3 +1,5 @@
+"use client";
+
 import { useMemo, type ComponentPropsWithoutRef, type FC } from "react";
 import type { Transition } from "framer-motion";
 import { motion } from "framer-motion";
