@@ -1,33 +1,5 @@
-"use client";
-
-import { useActiveLink } from "@/hooks/useActiveLink";
-import { cn } from "@/utils/styles";
-import Link from "next/link";
-import type { LinkProps } from "next/link";
-import type { ComponentPropsWithoutRef, FC } from "react";
-
-type NavLinkProps = ComponentPropsWithoutRef<"a"> & LinkProps;
-
-const NavLink: FC<NavLinkProps> = (props) => {
-  const { className, href, ...rest } = props;
-  const isActive = useActiveLink(href);
-  return (
-    <Link
-      className={cn(
-        "fixed z-50 text-2xl font-bold uppercase leading-[normal]",
-        "before:absolute before:h-[2px] before:w-0 before:bg-white before:opacity-0",
-        "before:transition-all before:duration-300 before:ease-in-out",
-        "before:bottom-[0%] before:left-1/2 before:-translate-x-1/2 before:transform",
-        "hover:before:w-full hover:before:opacity-100",
-        isActive && "before:w-full before:opacity-100",
-        className,
-      )}
-      href={href}
-      {...rest}
-      prefetch={false}
-    />
-  );
-};
+import type { FC } from "react";
+import NavLink from "@/components/nav-link";
 
 const Navigation: FC = () => {
   return (
