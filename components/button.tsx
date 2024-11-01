@@ -1,11 +1,21 @@
 "use client";
 
-import type { ComponentPropsWithoutRef, FC } from "react";
+import {
+  useMemo,
+  type ComponentPropsWithoutRef,
+  type ElementType,
+} from "react";
 import type { HTMLMotionProps } from "framer-motion";
 import { motion } from "framer-motion";
 import { cn } from "@/utils/styles";
 
-type Props = ComponentPropsWithoutRef<"button"> & HTMLMotionProps<"button">;
+interface Base<T extends ElementType = "button"> {
+  as?: T;
+}
+
+type Props<T extends ElementType = "button"> = Base<T> &
+  ComponentPropsWithoutRef<T> &
+  HTMLMotionProps<"button">;
 
 const animation: HTMLMotionProps<"button"> = {
   initial: { x: 400, y: 0, opacity: 0 },
@@ -13,10 +23,11 @@ const animation: HTMLMotionProps<"button"> = {
   transition: { duration: 0.5, ease: "easeInOut" },
 };
 
-const Button: FC<Props> = (props) => {
-  const { className, children, transition, ...rest } = props;
+const Button = <T extends ElementType = "button">(props: Props<T>) => {
+  const { as = "button", className, children, transition, ...rest } = props;
+  const Component = useMemo(() => motion.create(as as string), [as]);
   return (
-    <motion.button
+    <Component
       className={cn(
         "border-2 border-white bg-transparent px-4 py-3 text-base font-semibold uppercase transition-colors duration-300 ease-in-out hover:bg-white hover:text-black",
         className,
@@ -25,7 +36,7 @@ const Button: FC<Props> = (props) => {
       transition={{ ...animation.transition, ...transition }}
       {...rest}>
       {children}
-    </motion.button>
+    </Component>
   );
 };
 

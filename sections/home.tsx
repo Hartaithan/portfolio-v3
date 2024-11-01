@@ -1,6 +1,7 @@
-import Button from "@/components/button";
-import Heading from "@/components/heading";
 import type { FC } from "react";
+import Heading from "@/components/heading";
+import Button from "@/components/button";
+import Link from "next/link";
 
 const HomeSection: FC = () => {
   return (
@@ -9,7 +10,13 @@ const HomeSection: FC = () => {
       <Heading transition={{ delay: 0.2 }}>I&apos;m Hartaithan.</Heading>
       <Heading transition={{ delay: 0 }}>Frontend Developer</Heading>
       <div className="mt-5 flex gap-x-5">
-        <Button transition={{ delay: 0.6 }}>My Projects</Button>
+        <Button
+          as={Link}
+          href="/projects"
+          prefetch={false}
+          transition={{ delay: 0.6 }}>
+          My Projects
+        </Button>
         <Button transition={{ delay: 0.8 }}>Open Resume</Button>
       </div>
     </div>
