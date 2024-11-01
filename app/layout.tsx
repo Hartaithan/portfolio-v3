@@ -1,5 +1,6 @@
 import "@/app/globals.css";
 import Navigation from "@/components/nav";
+import Background from "@/components/background";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import type { FC, PropsWithChildren } from "react";
@@ -21,6 +22,7 @@ const RootLayout: FC<PropsWithChildren> = (props) => {
       <body className={font.className}>
         <Navigation />
         {children}
+        <Background />
       </body>
     </html>
   );
