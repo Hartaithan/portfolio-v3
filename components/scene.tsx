@@ -3,7 +3,7 @@
 "use client";
 
 import type { FC } from "react";
-import { useRef } from "react";
+import { forwardRef, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import type {
   BufferGeometry,
@@ -13,6 +13,7 @@ import type {
   Object3DEventMap,
 } from "three";
 import { PerspectiveCamera } from "@react-three/drei";
+import { getRandomNumber } from "@/utils/number";
 
 type MeshType = Mesh<
   BufferGeometry<NormalBufferAttributes>,
@@ -20,22 +21,97 @@ type MeshType = Mesh<
   Object3DEventMap
 >;
 
+const DefaultMaterial: FC = () => (
+  <meshStandardMaterial color="white" wireframe transparent opacity={0.3} />
+);
+
+const Box = forwardRef<MeshType>((_props, ref) => {
+  return (
+    <mesh ref={ref} scale={2}>
+      <boxGeometry args={[1, 1, 1]} />
+      <DefaultMaterial />
+    </mesh>
+  );
+});
+
+const Icosahedron = forwardRef<MeshType>((_props, ref) => {
+  return (
+    <mesh ref={ref} scale={1.5}>
+      <icosahedronGeometry args={[1, 1]} />
+      <DefaultMaterial />
+    </mesh>
+  );
+});
+
+const Octahedron = forwardRef<MeshType>((_props, ref) => {
+  return (
+    <mesh ref={ref} scale={1.5}>
+      <octahedronGeometry args={[1, 0]} />
+      <DefaultMaterial />
+    </mesh>
+  );
+});
+
+const TorusKnot = forwardRef<MeshType>((_props, ref) => {
+  return (
+    <mesh ref={ref} scale={1}>
+      <torusKnotGeometry args={[1, 0.1, 160, 10, 3, 5]} />
+      <DefaultMaterial />
+    </mesh>
+  );
+});
+
+const Sphere = forwardRef<MeshType>((_props, ref) => {
+  return (
+    <mesh ref={ref} scale={1.5}>
+      <sphereGeometry args={[1, 8, 8]} />
+      <DefaultMaterial />
+    </mesh>
+  );
+});
+
+const Tetrahedron = forwardRef<MeshType>((_props, ref) => {
+  return (
+    <mesh ref={ref} scale={1.8}>
+      <tetrahedronGeometry args={[1, 0]} />
+      <DefaultMaterial />
+    </mesh>
+  );
+});
+
+const Torus = forwardRef<MeshType>((_props, ref) => {
+  return (
+    <mesh ref={ref} scale={0.05}>
+      <torusGeometry args={[25, 8, 4, 4]} />
+      <DefaultMaterial />
+    </mesh>
+  );
+});
+
+const figures = [
+  { Component: Box, rotation: 0.003 },
+  { Component: Icosahedron, rotation: 0.002 },
+  { Component: Octahedron, rotation: 0.006 },
+  { Component: TorusKnot, rotation: 0.005 },
+  { Component: Sphere, rotation: 0.0025 },
+  { Component: Tetrahedron, rotation: 0.005 },
+  { Component: Torus, rotation: 0.005 },
+];
+
+const index = getRandomNumber(0, figures.length - 1);
+const { Component, rotation } = figures[index];
+
 const Figure: FC = () => {
   const meshRef = useRef<MeshType>(null);
 
   useFrame(() => {
-    if (meshRef.current) meshRef.current.rotation.y += 0.005;
+    if (meshRef.current) meshRef.current.rotation.y += rotation;
   });
 
-  return (
-    <mesh ref={meshRef} scale={2}>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color="white" wireframe transparent opacity={0.3} />
-    </mesh>
-  );
+  return <Component ref={meshRef} />;
 };
 
-const Wrapper: FC = () => {
+const Scene: FC = () => {
   return (
     <Canvas dpr={window.devicePixelRatio}>
       <PerspectiveCamera makeDefault position={[0, 0, 6]} />
@@ -45,4 +121,4 @@ const Wrapper: FC = () => {
   );
 };
 
-export default Wrapper;
+export default Scene;
