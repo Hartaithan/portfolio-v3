@@ -25,7 +25,6 @@ const NavLink: FC<Props> = (props) => {
       )}
       href={href}
       {...rest}
-      prefetch={false}
       onClick={handleClick}
     />
   );

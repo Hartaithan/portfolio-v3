@@ -10,11 +10,7 @@ const HomeSection: FC = () => {
       <Heading transition={{ delay: 0.2 }}>I&apos;m Hartaithan.</Heading>
       <Heading transition={{ delay: 0 }}>Frontend Developer</Heading>
       <div className="mt-5 flex gap-x-5">
-        <Button
-          as={Link}
-          href="/projects"
-          prefetch={false}
-          transition={{ delay: 0.6 }}>
+        <Button as={Link} href="/projects" transition={{ delay: 0.6 }}>
           My Projects
         </Button>
         <Button transition={{ delay: 0.8 }}>Open Resume</Button>
