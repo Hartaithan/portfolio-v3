@@ -102,13 +102,16 @@ const index = getRandomNumber(0, figures.length - 1);
 const { Component, rotation } = figures[index];
 
 const Figure: FC = () => {
-  const meshRef = useRef<MeshType>(null);
+  const mesh = useRef<MeshType>(null);
 
-  useFrame(() => {
-    if (meshRef.current) meshRef.current.rotation.y += rotation;
+  useFrame(({ clock }) => {
+    if (!mesh.current) return;
+    const elapsed = clock.getElapsedTime();
+    mesh.current.rotation.y += rotation;
+    mesh.current.position.y = Math.sin(elapsed) * 0.1;
   });
 
-  return <Component ref={meshRef} />;
+  return <Component ref={mesh} />;
 };
 
 const Scene: FC = () => {
