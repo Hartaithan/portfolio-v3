@@ -2,107 +2,119 @@
 
 "use client";
 
-import type { FC } from "react";
+import type { FC, PropsWithChildren } from "react";
 import { forwardRef, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import type {
-  BufferGeometry,
-  Material,
-  Mesh,
-  NormalBufferAttributes,
-  Object3DEventMap,
-} from "three";
-import { PerspectiveCamera } from "@react-three/drei";
+import type { Mesh } from "three";
+import { PerspectiveCamera, Text3D } from "@react-three/drei";
 import { getRandomNumber } from "@/utils/number";
-
-type MeshType = Mesh<
-  BufferGeometry<NormalBufferAttributes>,
-  Material | Material[],
-  Object3DEventMap
->;
+import { centerText, numberToVector } from "@/utils/threejs";
 
 const DefaultMaterial: FC = () => (
   <meshStandardMaterial color="white" wireframe transparent opacity={0.3} />
 );
 
-const Box = forwardRef<MeshType>((_props, ref) => {
-  return (
-    <mesh ref={ref} scale={2}>
-      <boxGeometry args={[1, 1, 1]} />
-      <DefaultMaterial />
-    </mesh>
-  );
-});
+type MeshProps = PropsWithChildren & Pick<Mesh, "scale">;
 
-const Icosahedron = forwardRef<MeshType>((_props, ref) => {
-  return (
-    <mesh ref={ref} scale={1.5}>
-      <icosahedronGeometry args={[1, 1]} />
-      <DefaultMaterial />
-    </mesh>
-  );
-});
+const Box = forwardRef<Mesh, MeshProps>((props, ref) => (
+  <mesh ref={ref} {...props}>
+    <boxGeometry args={[1, 1, 1]} />
+    <DefaultMaterial />
+  </mesh>
+));
 
-const Octahedron = forwardRef<MeshType>((_props, ref) => {
-  return (
-    <mesh ref={ref} scale={1.5}>
-      <octahedronGeometry args={[1, 0]} />
-      <DefaultMaterial />
-    </mesh>
-  );
-});
+const Icosahedron = forwardRef<Mesh, MeshProps>((props, ref) => (
+  <mesh ref={ref} {...props}>
+    <icosahedronGeometry args={[1, 1]} />
+    <DefaultMaterial />
+  </mesh>
+));
 
-const TorusKnot = forwardRef<MeshType>((_props, ref) => {
-  return (
-    <mesh ref={ref} scale={1}>
-      <torusKnotGeometry args={[1, 0.1, 160, 10, 3, 5]} />
-      <DefaultMaterial />
-    </mesh>
-  );
-});
+const Octahedron = forwardRef<Mesh, MeshProps>((props, ref) => (
+  <mesh ref={ref} {...props}>
+    <octahedronGeometry args={[1, 0]} />
+    <DefaultMaterial />
+  </mesh>
+));
 
-const Sphere = forwardRef<MeshType>((_props, ref) => {
-  return (
-    <mesh ref={ref} scale={1.5}>
-      <sphereGeometry args={[1, 8, 8]} />
-      <DefaultMaterial />
-    </mesh>
-  );
-});
+const TorusKnot = forwardRef<Mesh, MeshProps>((props, ref) => (
+  <mesh ref={ref} {...props}>
+    <torusKnotGeometry args={[1, 0.1, 160, 10, 3, 5]} />
+    <DefaultMaterial />
+  </mesh>
+));
 
-const Tetrahedron = forwardRef<MeshType>((_props, ref) => {
-  return (
-    <mesh ref={ref} scale={1.8}>
-      <tetrahedronGeometry args={[1, 0]} />
-      <DefaultMaterial />
-    </mesh>
-  );
-});
+const Sphere = forwardRef<Mesh, MeshProps>((props, ref) => (
+  <mesh ref={ref} {...props}>
+    <sphereGeometry args={[1, 8, 8]} />
+    <DefaultMaterial />
+  </mesh>
+));
 
-const Torus = forwardRef<MeshType>((_props, ref) => {
+const Tetrahedron = forwardRef<Mesh, MeshProps>((props, ref) => (
+  <mesh ref={ref} {...props}>
+    <tetrahedronGeometry args={[1, 0]} />
+    <DefaultMaterial />
+  </mesh>
+));
+
+const Torus = forwardRef<Mesh, MeshProps>((props, ref) => (
+  <mesh ref={ref} {...props}>
+    <torusGeometry args={[25, 8, 4, 4]} />
+    <DefaultMaterial />
+  </mesh>
+));
+
+const Text = forwardRef<Mesh, MeshProps>((props, ref) => {
+  const { children, ...rest } = props;
   return (
-    <mesh ref={ref} scale={0.05}>
-      <torusGeometry args={[25, 8, 4, 4]} />
-      <DefaultMaterial />
+    <mesh ref={ref} {...rest}>
+      <Text3D
+        size={2}
+        height={0.3}
+        curveSegments={2}
+        font="/fonts/arial.json"
+        onBeforeRender={centerText}>
+        {children}
+        <DefaultMaterial />
+      </Text3D>
     </mesh>
   );
 });
 
 const figures = [
-  { Component: Box, rotation: 0.003 },
-  { Component: Icosahedron, rotation: 0.002 },
-  { Component: Octahedron, rotation: 0.006 },
-  { Component: TorusKnot, rotation: 0.005 },
-  { Component: Sphere, rotation: 0.0025 },
-  { Component: Tetrahedron, rotation: 0.005 },
-  { Component: Torus, rotation: 0.005 },
+  { Component: Box, scale: 2, rotation: 0.003 },
+  { Component: Icosahedron, scale: 1.4, rotation: 0.002 },
+  { Component: Octahedron, scale: 1.5, rotation: 0.006 },
+  { Component: TorusKnot, scale: 1, rotation: 0.005 },
+  { Component: Sphere, scale: 1.5, rotation: 0.0025 },
+  { Component: Tetrahedron, scale: 1.8, rotation: 0.005 },
+  { Component: Torus, scale: 0.05, rotation: 0.005 },
+  { Component: Text, scale: 1.2, children: ":D", rotation: 0.005 },
+  { Component: Text, scale: 0.55, children: "(•_•)", rotation: 0.005 },
+  { Component: Text, scale: 1.5, children: "H", rotation: 0.005 },
+  { Component: Text, scale: 1.2, children: "D:", rotation: 0.005 },
+  { Component: Text, scale: 0.4, children: "( ͡° ͜ʖ ͡°)", rotation: 0.005 },
+  { Component: Text, scale: 1.3, children: "if", rotation: 0.005 },
+  { Component: Text, scale: 0.6, children: "else", rotation: 0.005 },
+  { Component: Text, scale: 0.5, children: "ʕ•ᴥ•ʔ", rotation: 0.005 },
+  { Component: Text, scale: 0.4, children: "( ͠° ͟ل ͡°)", rotation: 0.005 },
+  { Component: Text, scale: 1, children: "┼", rotation: 0.005 },
+  { Component: Text, scale: 1.5, children: "☺", rotation: 0.005 },
+  { Component: Text, scale: 1.1, children: "☼", rotation: 0.005 },
+  { Component: Text, scale: 1.1, children: "░", rotation: 0.005 },
+  { Component: Text, scale: 1.1, children: "ʘ", rotation: 0.005 },
+  { Component: Text, scale: 1.1, children: "Ξ", rotation: 0.005 },
+  { Component: Text, scale: 1.1, children: "҉", rotation: 0.005 },
+  { Component: Text, scale: 1.1, children: "҈", rotation: 0.005 },
+  { Component: Text, scale: 2, children: "◌", rotation: 0.005 },
 ];
 
 const index = getRandomNumber(0, figures.length - 1);
-const { Component, rotation } = figures[index];
+const { Component, scale, children, rotation } = figures[index];
 
 const Figure: FC = () => {
-  const mesh = useRef<MeshType>(null);
+  const mesh = useRef<Mesh>(null);
 
   useFrame(({ clock }) => {
     if (!mesh.current) return;
@@ -111,7 +123,11 @@ const Figure: FC = () => {
     mesh.current.position.y = Math.sin(elapsed) * 0.1;
   });
 
-  return <Component ref={mesh} />;
+  return (
+    <Component ref={mesh} scale={numberToVector(scale)}>
+      {children}
+    </Component>
+  );
 };
 
 const Scene: FC = () => {
