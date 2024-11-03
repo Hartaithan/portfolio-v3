@@ -1,9 +1,10 @@
 import "@/app/globals.css";
-import Navigation from "@/components/nav";
-import Background from "@/components/background";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import type { FC, PropsWithChildren } from "react";
+import Navigation from "@/components/nav";
+import Background from "@/components/background";
+import LayoutTransition from "@/components/layout-transition";
 
 const font = Inter({ subsets: ["latin"], fallback: ["Arial"] });
 
@@ -21,7 +22,7 @@ const RootLayout: FC<PropsWithChildren> = (props) => {
     <html lang="en">
       <body className={font.className}>
         <Navigation />
-        {children}
+        <LayoutTransition>{children}</LayoutTransition>
         <Background />
       </body>
     </html>
