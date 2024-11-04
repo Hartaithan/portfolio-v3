@@ -3,16 +3,21 @@
 "use client";
 
 import type { FC } from "react";
-import { useRef } from "react";
+import { memo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import type { Mesh } from "three";
 import { PerspectiveCamera } from "@react-three/drei";
 import { numberToVector } from "@/utils/threejs";
 import { getFigure } from "@/components/figures";
 
+interface Props {
+  onAfterRender: () => void;
+}
+
 const { Component, scale, children, rotation } = getFigure();
 
-const Figure: FC = () => {
+const Figure: FC<Props> = (props) => {
+  const { onAfterRender } = props;
   const mesh = useRef<Mesh>(null);
 
   useFrame(({ clock }) => {
@@ -23,20 +28,24 @@ const Figure: FC = () => {
   });
 
   return (
-    <Component ref={mesh} scale={numberToVector(scale)}>
+    <Component
+      ref={mesh}
+      scale={numberToVector(scale)}
+      onAfterRender={onAfterRender}>
       {children}
     </Component>
   );
 };
 
-const Scene: FC = () => {
+const Scene: FC<Props> = memo((props) => {
+  const { onAfterRender } = props;
   return (
     <Canvas dpr={window.devicePixelRatio}>
       <PerspectiveCamera makeDefault position={[0, 0, 6]} />
       <ambientLight intensity={10} />
-      <Figure />
+      <Figure onAfterRender={onAfterRender} />
     </Canvas>
   );
-};
+});
 
 export default Scene;
