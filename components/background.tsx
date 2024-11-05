@@ -1,9 +1,9 @@
 "use client";
 
-import { useCallback, useState, type FC } from "react";
-import dynamic from "next/dynamic";
 import type { Transition, Variants } from "framer-motion";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+import { useCallback, useState, type FC } from "react";
 
 const Scene = dynamic(() => import("@/components/scene"), { ssr: false });
 

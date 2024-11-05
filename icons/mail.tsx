@@ -1,5 +1,5 @@
-import type { FC } from "react";
 import type { IconProps } from "@/models/icon";
+import type { FC } from "react";
 
 const IconMail: FC<IconProps> = (props) => (
   <svg

@@ -1,5 +1,5 @@
-import type { FC } from "react";
 import type { IconProps } from "@/models/icon";
+import type { FC } from "react";
 
 const IconLinkedIn: FC<IconProps> = (props) => (
   <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" {...props}>

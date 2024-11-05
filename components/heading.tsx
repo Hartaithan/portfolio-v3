@@ -1,9 +1,9 @@
 "use client";
 
-import type { ComponentPropsWithoutRef, FC } from "react";
+import { cn } from "@/utils/styles";
 import type { HTMLMotionProps } from "framer-motion";
 import { motion } from "framer-motion";
-import { cn } from "@/utils/styles";
+import type { ComponentPropsWithoutRef, FC } from "react";
 
 type Props = ComponentPropsWithoutRef<"h1"> & HTMLMotionProps<"h1">;
 

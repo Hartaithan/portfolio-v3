@@ -1,7 +1,7 @@
+import Contact from "@/components/contact";
+import { contacts } from "@/constants/contact";
 import type { Metadata } from "next";
 import type { FC } from "react";
-import { contacts } from "@/constants/contact";
-import Contact from "@/components/contact";
 
 export const metadata: Metadata = { title: "Contact" };
 

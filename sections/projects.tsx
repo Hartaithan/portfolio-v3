@@ -1,14 +1,14 @@
 "use client";
 
-import type { ComponentPropsWithoutRef, FC } from "react";
-import type { BoundingBox, Transition, Variants } from "framer-motion";
-import { motion, AnimatePresence } from "framer-motion";
+import Pagination from "@/components/pagination";
 import ProjectSlide from "@/components/project-slide";
 import { projects } from "@/constants/projects";
 import { useCarousel } from "@/hooks/useCarousel";
-import { cn } from "@/utils/styles";
 import IconArrow from "@/icons/arrow";
-import Pagination from "@/components/pagination";
+import { cn } from "@/utils/styles";
+import type { BoundingBox, Transition, Variants } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import type { ComponentPropsWithoutRef, FC } from "react";
 
 const variants: Variants = {
   enter: (direction: number) => ({

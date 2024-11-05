@@ -2,13 +2,13 @@
 
 "use client";
 
+import { getRandomNumber } from "@/utils/number";
+import { centerText } from "@/utils/threejs";
+import { Text3D } from "@react-three/drei";
+import type { MeshProps } from "@react-three/fiber";
 import type { FC } from "react";
 import { forwardRef } from "react";
 import type { Mesh } from "three";
-import { Text3D } from "@react-three/drei";
-import { getRandomNumber } from "@/utils/number";
-import { centerText } from "@/utils/threejs";
-import type { MeshProps } from "@react-three/fiber";
 
 const Material: FC = () => (
   <meshStandardMaterial color="white" wireframe transparent opacity={0.3} />

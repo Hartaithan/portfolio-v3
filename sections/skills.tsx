@@ -1,11 +1,11 @@
 "use client";
 
-import { useMemo, type FC } from "react";
+import GradientOverlay from "@/components/gradient-overlay";
+import { skills } from "@/constants/skills";
+import { groupSkills } from "@/utils/skills";
 import type { TargetAndTransition } from "framer-motion";
 import { motion } from "framer-motion";
-import { groupSkills } from "@/utils/skills";
-import { skills } from "@/constants/skills";
-import GradientOverlay from "@/components/gradient-overlay";
+import { useMemo, type FC } from "react";
 
 interface SliderProps {
   items: string[];

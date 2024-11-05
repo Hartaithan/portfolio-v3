@@ -1,10 +1,10 @@
 "use client";
 
-import type { HTMLMotionProps } from "framer-motion";
-import { motion, AnimatePresence } from "framer-motion";
-import type { FC, PropsWithChildren } from "react";
-import { usePathname } from "next/navigation";
 import FrozenRouter from "@/components/frozen-router";
+import type { HTMLMotionProps } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import type { FC, PropsWithChildren } from "react";
 
 const animation: HTMLMotionProps<"main"> = {
   initial: { opacity: 0 },

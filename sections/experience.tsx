@@ -1,12 +1,12 @@
 "use client";
 
-import type { ComponentPropsWithoutRef, FC } from "react";
-import type { BoundingBox, Transition, Variants } from "framer-motion";
-import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/utils/styles";
-import { experience } from "@/constants/experience";
 import ExperienceSlide from "@/components/experience-slide";
+import { experience } from "@/constants/experience";
 import { useCarousel } from "@/hooks/useCarousel";
+import { cn } from "@/utils/styles";
+import type { BoundingBox, Transition, Variants } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import type { ComponentPropsWithoutRef, FC } from "react";
 
 const variants: Variants = {
   enter: (direction: number) => ({

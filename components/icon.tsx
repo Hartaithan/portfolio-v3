@@ -1,6 +1,6 @@
-import type { FC } from "react";
 import { icons } from "@/constants/icons";
 import type { IconProps, Icon as IconType } from "@/models/icon";
+import type { FC } from "react";
 
 interface Props extends IconProps {
   icon: IconType;

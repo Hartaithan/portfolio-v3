@@ -1,8 +1,8 @@
+import Icon from "@/components/icon";
 import { projects } from "@/constants/projects";
 import { cn } from "@/utils/styles";
 import Image from "next/image";
 import type { FC } from "react";
-import Icon from "@/components/icon";
 
 interface Props {
   index: number;

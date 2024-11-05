@@ -1,5 +1,5 @@
-import type { FC } from "react";
 import NavLink from "@/components/nav-link";
+import type { FC } from "react";
 
 const Navigation: FC = () => {
   return (

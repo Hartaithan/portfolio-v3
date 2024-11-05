@@ -1,7 +1,7 @@
-import type { FC } from "react";
-import Heading from "@/components/heading";
 import Button from "@/components/button";
+import Heading from "@/components/heading";
 import Link from "next/link";
+import type { FC } from "react";
 
 const HomeSection: FC = () => {
   return (

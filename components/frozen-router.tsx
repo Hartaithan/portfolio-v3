@@ -1,8 +1,8 @@
 "use client";
 
-import { useContext, useRef } from "react";
-import type { FC, PropsWithChildren } from "react";
 import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import type { FC, PropsWithChildren } from "react";
+import { useContext, useRef } from "react";
 
 const FrozenRouter: FC<PropsWithChildren> = (props) => {
   const { children } = props;

@@ -1,6 +1,6 @@
+import ProjectsSection from "@/sections/projects";
 import type { Metadata } from "next";
 import type { FC } from "react";
-import ProjectsSection from "@/sections/projects";
 
 export const metadata: Metadata = { title: "Projects" };
 

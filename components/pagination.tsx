@@ -1,12 +1,12 @@
 "use client";
 
-import type { ComponentPropsWithoutRef } from "react";
-import { memo, useMemo, type FC } from "react";
+import GradientOverlay from "@/components/gradient-overlay";
+import type { PageHandler } from "@/hooks/useCarousel";
+import { cn } from "@/utils/styles";
 import type { Transition } from "framer-motion";
 import { motion } from "framer-motion";
-import { cn } from "@/utils/styles";
-import type { PageHandler } from "@/hooks/useCarousel";
-import GradientOverlay from "@/components/gradient-overlay";
+import type { ComponentPropsWithoutRef } from "react";
+import { memo, useMemo, type FC } from "react";
 
 interface Props extends ComponentPropsWithoutRef<"div"> {
   length: number;

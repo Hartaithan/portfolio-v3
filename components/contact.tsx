@@ -1,7 +1,7 @@
+import Icon from "@/components/icon";
 import type { ContactItem } from "@/models/contact";
 import { cn } from "@/utils/styles";
 import type { FC } from "react";
-import Icon from "@/components/icon";
 
 const Contact: FC<ContactItem> = (props) => {
   const { id, href, icon, ...rest } = props;

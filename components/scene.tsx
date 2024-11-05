@@ -2,13 +2,13 @@
 
 "use client";
 
+import { getFigure } from "@/components/figures";
+import { numberToVector } from "@/utils/threejs";
+import { PerspectiveCamera } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
 import type { FC } from "react";
 import { memo, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
 import type { Mesh } from "three";
-import { PerspectiveCamera } from "@react-three/drei";
-import { numberToVector } from "@/utils/threejs";
-import { getFigure } from "@/components/figures";
 
 interface Props {
   onAfterRender: () => void;

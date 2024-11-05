@@ -1,9 +1,9 @@
-import type { FC } from "react";
 import { experience } from "@/constants/experience";
 import {
   formatExperienceDate,
   getExperienceDuration,
 } from "@/utils/experience";
+import type { FC } from "react";
 
 interface Props {
   index: number;
