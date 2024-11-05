@@ -3,9 +3,9 @@
 import { useMemo, type FC } from "react";
 import type { TargetAndTransition } from "framer-motion";
 import { motion } from "framer-motion";
-import { cn } from "@/utils/styles";
 import { groupSkills } from "@/utils/skills";
 import { skills } from "@/constants/skills";
+import GradientOverlay from "@/components/gradient-overlay";
 
 interface SliderProps {
   items: string[];
@@ -25,24 +25,12 @@ const animate: TargetAndTransition = {
   },
 };
 
-const Overlay: FC = () => (
-  <div
-    className={cn(
-      "pointer-events-none absolute inset-0 z-10",
-      "before:blur-3 before:absolute before:left-0 before:top-0 before:h-full before:w-4/12",
-      "before:bg-gradient-to-r before:from-neutral-900 before:to-transparent before:filter",
-      "after:blur-3 after:absolute after:right-0 after:top-0 after:h-full after:w-4/12",
-      "after:bg-gradient-to-l after:from-neutral-900 after:to-transparent after:filter",
-    )}
-  />
-);
-
 const Slider: FC<SliderProps> = (props) => {
   const { items } = props;
   const duplicated = useMemo(() => [...items, ...items], [items]);
   return (
     <div className="relative mx-auto w-full overflow-hidden">
-      <Overlay />
+      <GradientOverlay />
       <motion.div className="flex w-max" animate={animate}>
         {duplicated.map((skill, index) => (
           <p

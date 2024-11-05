@@ -6,6 +6,7 @@ import type { Transition } from "framer-motion";
 import { motion } from "framer-motion";
 import { cn } from "@/utils/styles";
 import type { PageHandler } from "@/hooks/useCarousel";
+import GradientOverlay from "@/components/gradient-overlay";
 
 interface Props extends ComponentPropsWithoutRef<"div"> {
   length: number;
@@ -33,18 +34,6 @@ const getScale = (index: number, page: number): number => {
   else if (Math.abs(index - page) === 2) return 0.8;
   else return 0;
 };
-
-const Overlay: FC = () => (
-  <div
-    className={cn(
-      "pointer-events-none absolute inset-0 z-10 w-full",
-      "before:blur-3 before:absolute before:left-0 before:top-0 before:h-full before:w-3/12",
-      "before:bg-gradient-to-r before:from-black before:to-transparent before:filter",
-      "after:blur-3 after:absolute after:right-0 after:top-0 after:h-full after:w-3/12",
-      "after:bg-gradient-to-l after:from-black after:to-transparent after:filter",
-    )}
-  />
-);
 
 const Pagination: FC<Props> = memo((props) => {
   const { length, page, handlePage, className, ...rest } = props;
@@ -89,7 +78,7 @@ const Pagination: FC<Props> = memo((props) => {
           );
         })}
       </motion.div>
-      <Overlay />
+      <GradientOverlay className="w-full before:from-black after:from-black" />
     </div>
   );
 });
