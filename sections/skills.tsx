@@ -29,8 +29,7 @@ const Slider: FC<SliderProps> = (props) => {
   const { items } = props;
   const duplicated = useMemo(() => [...items, ...items], [items]);
   return (
-    <div className="relative mx-auto w-full overflow-hidden">
-      <GradientOverlay />
+    <div className="relative mx-auto w-[calc(100%-2px)] overflow-hidden">
       <motion.div className="flex w-max" animate={animate}>
         {duplicated.map((skill, index) => (
           <p
@@ -46,9 +45,12 @@ const Slider: FC<SliderProps> = (props) => {
 
 const SkillsSection: FC = () => {
   return (
-    <div className="flex h-44 flex-col overflow-hidden rounded-lg bg-neutral-900 py-5">
-      <h1 className="mb-3 px-6 text-xl font-semibold">Skills</h1>
-      <div className="flex flex-1 flex-col items-center justify-between">
+    <div className="flex h-40 flex-col overflow-hidden rounded-lg bg-neutral-900 py-4 md:h-44 md:py-5">
+      <h1 className="mb-3 px-5 text-base font-semibold md:px-6 md:text-xl">
+        Skills
+      </h1>
+      <div className="relative flex flex-1 flex-col items-center justify-between">
+        <GradientOverlay />
         <Slider items={grouped.one} />
         <Slider items={grouped.two} />
         <Slider items={grouped.three} />

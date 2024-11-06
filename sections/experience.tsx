@@ -51,9 +51,9 @@ const ExperienceSection: FC = () => {
     data: experience,
   });
   return (
-    <div className="relative flex min-h-40 flex-col overflow-hidden rounded-lg bg-neutral-900 px-6 py-5">
+    <div className="relative flex min-h-0 flex-col overflow-hidden rounded-lg bg-neutral-900 px-5 py-4 md:px-6 md:py-5 lg:min-h-40">
       <div className="mb-3 flex justify-between">
-        <h1 className="text-xl font-semibold">Experience</h1>
+        <h1 className="text-base font-semibold md:text-xl">Experience</h1>
         <div className="flex gap-x-3">
           <Arrow className="rotate-180" onClick={() => paginate(-1)} />
           <Arrow onClick={() => paginate(1)} />

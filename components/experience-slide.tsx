@@ -17,11 +17,13 @@ const ExperienceSlide: FC<Props> = (props) => {
   return (
     <>
       <div className="flex items-center gap-x-2">
-        <h1 className="font-semibold">{title}</h1>
-        <p className="text-sm leading-[normal] text-neutral-200">{location}</p>
+        <h1 className="text-sm font-semibold sm:text-base">{title}</h1>
+        <p className="text-xs leading-[normal] text-neutral-200 sm:text-sm">
+          {location}
+        </p>
       </div>
       <div className="mt-1 flex items-center gap-x-2">
-        <p className="text-sm">
+        <p className="text-xs sm:text-sm">
           {formatExperienceDate(from)} - {formatExperienceDate(to)}
         </p>
         <p className="text-xs leading-[normal]">{duration}</p>
@@ -30,7 +32,7 @@ const ExperienceSlide: FC<Props> = (props) => {
         {tags.map((tag) => (
           <p
             key={tag}
-            className="rounded bg-neutral-800 px-2 py-0.5 text-sm font-medium hover:bg-neutral-700">
+            className="rounded bg-neutral-800 px-2 py-0.5 text-xs font-medium hover:bg-neutral-700 sm:text-sm">
             {tag}
           </p>
         ))}
