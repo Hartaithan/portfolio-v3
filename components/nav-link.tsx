@@ -15,7 +15,7 @@ const NavLink: FC<Props> = (props) => {
   return (
     <Link
       className={cn(
-        "fixed z-50 text-2xl font-bold uppercase leading-[normal]",
+        "fixed z-50 text-lg font-bold uppercase leading-[normal] md:text-xl xl:text-2xl",
         "before:absolute before:h-[2px] before:w-0 before:bg-white before:opacity-0",
         "before:transition-all before:duration-300 before:ease-in-out",
         "before:bottom-[0%] before:left-1/2 before:-translate-x-1/2 before:transform",

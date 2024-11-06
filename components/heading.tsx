@@ -17,7 +17,10 @@ const Heading: FC<Props> = (props) => {
   const { className, children, transition, ...rest } = props;
   return (
     <motion.h1
-      className={cn("text-9xl font-semibold leading-[1.1]", className)}
+      className={cn(
+        "text-4xl font-semibold leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-9xl",
+        className,
+      )}
       {...animation}
       transition={{ ...animation.transition, ...transition }}
       {...rest}>

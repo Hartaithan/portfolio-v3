@@ -29,7 +29,7 @@ const Button = <T extends ElementType = "button">(props: Props<T>) => {
   return (
     <Component
       className={cn(
-        "border-2 border-white bg-transparent px-4 py-3 text-base font-semibold uppercase transition-colors duration-300 ease-in-out hover:bg-white hover:text-black",
+        "border-2 border-white bg-transparent px-3 py-2 text-xs font-semibold uppercase transition-colors duration-300 ease-in-out hover:bg-white hover:text-black md:px-3.5 md:py-2.5 md:text-sm xl:px-4 xl:py-3 xl:text-base",
         className,
       )}
       {...animation}
