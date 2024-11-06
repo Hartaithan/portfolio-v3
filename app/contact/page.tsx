@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "Contact" };
 
 const ContactPage: FC = () => {
   return (
-    <div className="grid grid-cols-3 gap-x-12 gap-y-10">
+    <div className="grid grid-cols-2 gap-x-8 gap-y-6 md:gap-x-12 md:gap-y-10 lg:grid-cols-3">
       {contacts.map((contact) => (
         <Contact key={contact.id} {...contact} />
       ))}
