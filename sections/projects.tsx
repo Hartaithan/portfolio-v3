@@ -41,11 +41,11 @@ const Arrow: FC<ComponentPropsWithoutRef<"button">> = (props) => {
   return (
     <button
       className={cn(
-        "absolute top-1/2 z-10 size-16 -translate-y-1/2 p-3",
+        "absolute top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center md:size-14 lg:size-16",
         className,
       )}
       {...rest}>
-      <IconArrow className="size-full fill-white" />
+      <IconArrow className="size-7 fill-white md:size-8 lg:size-10" />
     </button>
   );
 };
@@ -55,13 +55,19 @@ const ProjectsSection: FC = () => {
     useCarousel({ data: projects });
   return (
     <div className="flex size-full items-center justify-center overflow-hidden">
-      <Arrow className="left-4 rotate-180" onClick={() => paginate(-1)} />
-      <Arrow className="right-4" onClick={() => paginate(1)} />
+      <Arrow
+        className="left-0 rotate-180 sm:left-1 md:left-4"
+        onClick={() => paginate(-1)}
+      />
+      <Arrow
+        className="right-0 sm:right-1 md:right-4"
+        onClick={() => paginate(1)}
+      />
       <AnimatePresence initial={false} mode="wait" custom={direction}>
         <motion.div
           id="slide"
           key={page}
-          className="relative flex h-full w-7/12 flex-col items-center justify-center"
+          className="relative flex h-full w-10/12 flex-col items-center justify-center md:w-9/12 2xl:w-7/12"
           custom={direction}
           variants={variants}
           initial="enter"
@@ -76,7 +82,7 @@ const ProjectsSection: FC = () => {
         </motion.div>
       </AnimatePresence>
       <Pagination
-        className="absolute bottom-6"
+        className="absolute bottom-4 sm:bottom-5 md:bottom-6"
         length={projects.length}
         page={index}
         handlePage={handlePage}
