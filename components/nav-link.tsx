@@ -1,6 +1,6 @@
 "use client";
 
-import { useActiveLink } from "@/hooks/useActiveLink";
+import { useActiveLink } from "@/hooks/use-active-link";
 import { cn } from "@/utils/styles";
 import type { LinkProps } from "next/link";
 import Link from "next/link";

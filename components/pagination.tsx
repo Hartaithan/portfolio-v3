@@ -1,7 +1,7 @@
 "use client";
 
 import GradientOverlay from "@/components/gradient-overlay";
-import type { PageHandler } from "@/hooks/useCarousel";
+import type { PageHandler } from "@/hooks/use-carousel";
 import { cn } from "@/utils/styles";
 import type { Transition } from "framer-motion";
 import { motion } from "framer-motion";

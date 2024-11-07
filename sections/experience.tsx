@@ -2,7 +2,7 @@
 
 import ExperienceSlide from "@/components/experience-slide";
 import { experience } from "@/constants/experience";
-import { useCarousel } from "@/hooks/useCarousel";
+import { useCarousel } from "@/hooks/use-carousel";
 import { cn } from "@/utils/styles";
 import type { BoundingBox, Transition, Variants } from "framer-motion";
 import { AnimatePresence, motion } from "framer-motion";

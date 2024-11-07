@@ -3,7 +3,7 @@
 import Pagination from "@/components/pagination";
 import ProjectSlide from "@/components/project-slide";
 import { projects } from "@/constants/projects";
-import { useCarousel } from "@/hooks/useCarousel";
+import { useCarousel } from "@/hooks/use-carousel";
 import IconArrow from "@/icons/arrow";
 import { cn } from "@/utils/styles";
 import type { BoundingBox, Transition, Variants } from "framer-motion";
