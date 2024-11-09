@@ -6,8 +6,9 @@ import { useContext, useRef } from "react";
 
 const FrozenRouter: FC<PropsWithChildren> = (props) => {
   const { children } = props;
-  const context = useContext(LayoutRouterContext);
+  const context = useContext(LayoutRouterContext ?? {});
   const frozen = useRef(context);
+  if (!frozen.current) return children;
   return (
     <LayoutRouterContext.Provider value={frozen.current}>
       {children}
