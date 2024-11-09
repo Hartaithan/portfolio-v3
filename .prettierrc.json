@@ -2,8 +2,8 @@
   "bracketSameLine": true,
   "tailwindFunctions": ["cn"],
   "plugins": [
-    "prettier-plugin-organize-imports",
-    "prettier-plugin-tailwindcss"
+    "prettier-plugin-tailwindcss",
+    "prettier-plugin-organize-imports"
   ],
   "tailwindAttributes": ["styles", "classes"]
 }

@@ -9,8 +9,8 @@ const Contact: FC<ContactItem> = (props) => {
     <a
       key={id}
       className={cn(
-        "xs:size-32 group flex size-28 items-center justify-center rounded-full bg-neutral-900 md:size-36",
-        "xs:before:size-28 before:absolute before:-z-10 before:size-24 before:opacity-75 md:before:size-32",
+        "group flex size-28 items-center justify-center rounded-full bg-neutral-900 xs:size-32 md:size-36",
+        "before:absolute before:-z-10 before:size-24 before:opacity-75 xs:before:size-28 md:before:size-32",
         "before:rounded-full before:border-2 before:border-white",
         "before:transition-all before:duration-500 before:ease-out",
         "hover:bg-white hover:before:scale-150 hover:before:opacity-0",
@@ -20,7 +20,7 @@ const Contact: FC<ContactItem> = (props) => {
       {...rest}>
       <Icon
         icon={icon}
-        className="xs:size-16 size-14 fill-white transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:fill-black md:size-20"
+        className="size-14 fill-white transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:fill-black xs:size-16 md:size-20"
       />
     </a>
   );
