@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { FC } from "react";
 
-export const metadata: Metadata = { title: "Home | Hartaithan." };
+export const metadata: Metadata = { title: "Home" };
 
 const Home: FC = () => {
   return (
@@ -16,7 +16,13 @@ const Home: FC = () => {
         <Button as={Link} href="/projects" transition={{ delay: 0.6 }}>
           My Projects
         </Button>
-        <Button transition={{ delay: 0.8 }}>Open Resume</Button>
+        <Button
+          as={Link}
+          href="/resume"
+          target="_blank"
+          transition={{ delay: 0.8 }}>
+          Open Resume
+        </Button>
       </div>
     </div>
   );
