@@ -18,6 +18,13 @@ body {
   background: var(--background);
 }
 
+body:has(#resume) {
+  display: flex;
+  flex-direction: column;
+  color: var(--background);
+  background: var(--foreground);
+}
+
 #slide[data-motion-pop-id] {
   position: fixed !important;
 }

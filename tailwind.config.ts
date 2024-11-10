@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
   content: [
@@ -16,11 +15,8 @@ const config: Config = {
       },
       screens: {
         xs: "426px",
+        print: { raw: "print" },
       },
-    },
-    screens: {
-      xs: "426px",
-      ...defaultTheme.screens,
     },
   },
   plugins: [],
