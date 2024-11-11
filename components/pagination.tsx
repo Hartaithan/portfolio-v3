@@ -14,12 +14,27 @@ interface Props extends ComponentPropsWithoutRef<"div"> {
   handlePage: PageHandler;
 }
 
+interface PageProps extends Omit<Props, "length"> {
+  index: number;
+}
+
 const transition: Transition = { duration: 0.3, ease: "easeInOut" };
 
 const width = 144;
 const pageSize = 14;
 const pageSpacing = 4;
 const pageWidth = pageSize + pageSpacing * 2;
+
+const pageStyles = {
+  maxHeight: pageSize,
+  maxWidth: pageSize,
+  minWidth: pageSize,
+  minHeight: pageSize,
+  marginLeft: pageSpacing,
+  marginRight: pageSpacing,
+};
+
+const listStyle = { width, height: pageWidth };
 
 const getOffset = (index: number) => {
   const page = index + 1;
@@ -35,48 +50,45 @@ const getScale = (index: number, page: number): number => {
   else return 0;
 };
 
+const Page: FC<PageProps> = memo((props) => {
+  const { index, page, handlePage } = props;
+  const isActive = index === page;
+  return (
+    <motion.button
+      key={index}
+      className="rounded-full"
+      disabled={isActive}
+      onClick={() => handlePage(index)}
+      animate={{
+        scale: getScale(index, page),
+        background: isActive ? "#ffffff" : "#1b1b1b",
+      }}
+      style={pageStyles}
+      transition={transition}
+    />
+  );
+});
+
 const Pagination: FC<Props> = memo((props) => {
   const { length, page, handlePage, className, ...rest } = props;
-
+  const offset = getOffset(page);
   const pages = useMemo(() => Array.from({ length }), [length]);
-
   return (
     <div
       className={cn(
-        "z-20 flex items-center justify-center overflow-hidden",
+        "z-20 flex items-center justify-center overflow-hidden scale-75 md:scale-100",
         className,
       )}
-      style={{ width, height: pageWidth }}
+      style={listStyle}
       {...rest}>
       <motion.div
         className="flex w-full"
-        initial={{ x: getOffset(page) }}
-        animate={{ x: getOffset(page) }}
+        initial={{ x: offset }}
+        animate={{ x: offset }}
         transition={transition}>
-        {pages.map((_, index) => {
-          const isActive = index === page;
-          return (
-            <motion.button
-              key={index}
-              className="rounded-full"
-              disabled={isActive}
-              onClick={() => handlePage(index)}
-              animate={{
-                scale: getScale(index, page),
-                background: isActive ? "#ffffff" : "#1b1b1b",
-              }}
-              style={{
-                maxHeight: pageSize,
-                maxWidth: pageSize,
-                minWidth: pageSize,
-                minHeight: pageSize,
-                marginLeft: pageSpacing,
-                marginRight: pageSpacing,
-              }}
-              transition={transition}
-            />
-          );
-        })}
+        {pages.map((_, index) => (
+          <Page key={index} index={index} page={page} handlePage={handlePage} />
+        ))}
       </motion.div>
       <GradientOverlay className="w-full before:from-black after:from-black" />
     </div>
