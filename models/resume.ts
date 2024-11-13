@@ -7,4 +7,8 @@ export interface Resume {
   firstName: string;
   lastName: string;
   contacts: ResumeContact[];
+  about: {
+    title: string;
+    content: string[];
+  };
 }

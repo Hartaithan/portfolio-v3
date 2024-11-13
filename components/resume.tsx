@@ -47,6 +47,14 @@ const Resume: FC<Props> = (props) => {
         </div>
         <Contacts data={data.contacts} />
       </div>
+      <h1 className="text-xl font-semibold mt-3">{data.about.title}</h1>
+      <div className="flex flex-col gap-y-2 mt-2">
+        {data.about.content.map((line, idx) => (
+          <p key={idx} className="text-sm indent-4 leading-[normal]">
+            {line}
+          </p>
+        ))}
+      </div>
     </div>
   );
 };
