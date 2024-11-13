@@ -1,6 +1,46 @@
 import type { Language } from "@/models/language";
 import type { Resume } from "@/models/resume";
 
+const skills = {
+  frontend: [
+    "HTML, CSS, JavaScript ES6+",
+    "TypeScript 4+",
+    "CSS, SCSS, Tailwind",
+    "Responsive Design",
+    "Bootstrap, Mantine, Chakra UI",
+    "shadcn/ui, Framer Motion",
+    "Styled Components, Emotion",
+    "React, Next.js [Pages/App Router]",
+    "Vue 2/3, Vuex, Nuxt.js",
+    "Angular, RxJS, NgRX",
+  ],
+  moreFrontend: [
+    "Redux / Toolkit, Mobx, Zustand",
+    "React Hook Form, Formik",
+    "GraphQL, Apollo Client",
+    "Canvas API, Intersection Observer API",
+    "Three JS, React Three Fiber",
+    "Notifications API, Service Workers",
+    "Pagination, Infinite Scroll",
+    "Lazy Loading, Virtualization",
+    "Jest, React Testing Library",
+  ],
+  mobile: [
+    "Kotlin, Java",
+    "Android SDK, Volley",
+    "React Native",
+    "React Navigation",
+    "Reanimated, Gesture Handler",
+  ],
+  backend: [
+    "NodeJS, ExpressJS",
+    "JWT Tokens, Cookies",
+    "MongoDB, PostgreSQL",
+    "Authentication",
+    "Web Sockets",
+  ],
+};
+
 export const ru: Resume = {
   firstName: "Владимир",
   lastName: "Степанов",
@@ -18,6 +58,10 @@ export const ru: Resume = {
       "За более чем три года опыта работы с фронтенд фреймворками (преимущественно React, но также есть опыт с React Native, Vue и Angular) я приобрел навыки создания качественных и отзывчивых пользовательских интерфейсов. Я работал над множеством проектов, включая создание корпоративных сайтов, админ панелей и мобильных приложений",
       "Кроме того, у меня есть опыт менторства коллег, находящихся на этапе стажировки, и я всегда готов делиться своими знаниями и опытом. Я считаю, что обучение других — это отличный способ улучшить свои навыки и расширить свое понимание предметной области",
     ],
+  },
+  skills: {
+    title: "Навыки",
+    ...skills,
   },
 };
 
@@ -38,6 +82,10 @@ export const en: Resume = {
       "With over three years of experience working with frontend frameworks (primarily React, but also with React Native, Vue, and Angular), I have gained skills in creating high-quality and responsive user interfaces. I have worked on a variety of projects, including corporate websites, admin panels, and mobile applications",
       "Additionally, I have experience mentoring colleagues who are at the internship stage, and I am always ready to share my knowledge and experience. I believe that teaching others is a great way to improve my own skills and expand my understanding of the subject",
     ],
+  },
+  skills: {
+    title: "About",
+    ...skills,
   },
 };
 

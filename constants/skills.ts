@@ -8,10 +8,13 @@ export const skills = [
   // styles
   "CSS Animations",
   "Resp. Design",
+  // ui libs
   "Bootstrap",
   "Mantine",
   "Tailwind",
   "Styled Components",
+  "shadcn/ui",
+  "Framer Motion",
   // frameworks
   "React",
   "React Router",

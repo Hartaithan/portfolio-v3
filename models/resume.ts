@@ -3,12 +3,23 @@ export interface ResumeContact {
   type: "mail" | "link" | "text";
 }
 
+export interface ResumeAbout {
+  title: string;
+  content: string[];
+}
+
+export interface ResumeSkills {
+  title: string;
+  frontend: string[];
+  moreFrontend: string[];
+  mobile: string[];
+  backend: string[];
+}
+
 export interface Resume {
   firstName: string;
   lastName: string;
   contacts: ResumeContact[];
-  about: {
-    title: string;
-    content: string[];
-  };
+  about: ResumeAbout;
+  skills: ResumeSkills;
 }

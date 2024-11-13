@@ -23,6 +23,8 @@ body:has(#resume) {
   flex-direction: column;
   color: var(--background);
   background: var(--foreground);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 #slide[data-motion-pop-id] {
