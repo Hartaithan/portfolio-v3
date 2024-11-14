@@ -12,8 +12,11 @@ import { memo, useEffect, useRef } from "react";
 import type { PerspectiveCamera as Camera, Clock, Mesh } from "three";
 
 interface Props {
-  camera: MutableRefObject<Camera | null>;
   onAfterRender: () => void;
+}
+
+interface FigureProps extends Props {
+  camera: MutableRefObject<Camera | null>;
 }
 
 interface Zoom {
@@ -65,7 +68,7 @@ const setupZoom = (params: SetupParams) => {
   zoom.current = { value, changing: true };
 };
 
-const Figure: FC<Props> = (props) => {
+const Figure: FC<FigureProps> = (props) => {
   const { camera, onAfterRender } = props;
   const { width } = useWindowSize();
   const mesh = useRef<Mesh | null>(null);
