@@ -45,12 +45,12 @@ const Skills: FC<SkillsProps> = (props) => {
   const { className, title, data, ...rest } = props;
   return (
     <div className={className} {...rest}>
-      <h1 className="font-medium underline text-sm">
+      <h1 className="text-sm font-medium underline">
         {title ? title + ":" : "‎"}
       </h1>
       {data.map((skill, idx) => (
         <div key={idx} className="flex items-center">
-          <div className="size-1 bg-black mr-2 relative top-2 self-start print:bg-black" />
+          <div className="relative top-2 mr-2 size-1 self-start bg-black print:bg-black" />
           <p className="text-sm">{skill}</p>
         </div>
       ))}
@@ -70,16 +70,16 @@ const Resume: FC<Props> = (props) => {
         </div>
         <Contacts data={contacts} />
       </div>
-      <h1 className="text-xl font-semibold mt-3">{about.title}</h1>
-      <div className="flex flex-col gap-y-2 mt-2">
+      <h1 className="mt-3 text-xl font-semibold">{about.title}</h1>
+      <div className="mt-2 flex flex-col gap-y-2">
         {about.content.map((line, idx) => (
-          <p key={idx} className="text-sm indent-4 leading-[normal]">
+          <p key={idx} className="indent-4 text-sm leading-[normal]">
             {line}
           </p>
         ))}
       </div>
-      <h1 className="text-xl font-semibold mt-3">{skills.title}</h1>
-      <div className="grid grid-rows-3 grid-flow-col mt-2 gap-3">
+      <h1 className="mt-3 text-xl font-semibold">{skills.title}</h1>
+      <div className="mt-2 grid grid-flow-col grid-rows-3 gap-3">
         <Skills
           className="row-span-3"
           title="Frontend"
@@ -88,7 +88,7 @@ const Resume: FC<Props> = (props) => {
         <Skills className="row-span-3" data={skills.moreFrontend} />
         <Skills className="col-span-2" title="Mobile" data={skills.mobile} />
         <Skills
-          className="row-span-2 col-span-2"
+          className="col-span-2 row-span-2"
           title="Backend"
           data={skills.backend}
         />

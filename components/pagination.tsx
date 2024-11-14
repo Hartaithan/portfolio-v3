@@ -76,7 +76,7 @@ const Pagination: FC<Props> = memo((props) => {
   return (
     <div
       className={cn(
-        "z-20 flex items-center justify-center overflow-hidden scale-75 md:scale-100",
+        "z-20 flex scale-75 items-center justify-center overflow-hidden md:scale-100",
         className,
       )}
       style={listStyle}
