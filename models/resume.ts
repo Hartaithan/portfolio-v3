@@ -31,6 +31,17 @@ export interface ResumeExperience {
   content: ResumeExperienceItem[];
 }
 
+export interface ResumeEducationItem {
+  title: string;
+  specialty: string;
+  date: string;
+}
+
+export interface ResumeEducation {
+  title: string;
+  content: ResumeEducationItem[];
+}
+
 export interface Resume {
   firstName: string;
   lastName: string;
@@ -38,4 +49,5 @@ export interface Resume {
   about: ResumeAbout;
   skills: ResumeSkills;
   experience: ResumeExperience;
+  education: ResumeEducation;
 }

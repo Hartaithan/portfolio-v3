@@ -98,6 +98,16 @@ export const ru: Resume = {
       },
     ],
   },
+  education: {
+    title: "Образование",
+    content: [
+      {
+        title: "Якутский колледж связи и энергетики (ЯКСЭ)",
+        date: "2015 - 2018",
+        specialty: "Аудиовизуальная техника",
+      },
+    ],
+  },
 };
 
 export const en: Resume = {
@@ -154,6 +164,16 @@ export const en: Resume = {
         tags: ["React", "Next.JS"],
         date: "May 2021 - May 2022",
         duration: "1 year",
+      },
+    ],
+  },
+  education: {
+    title: "Education",
+    content: [
+      {
+        title: "Yakutsk College of Communications and Energy (YCCE)",
+        date: "2015 - 2018",
+        specialty: "Audio-visual technology",
       },
     ],
   },

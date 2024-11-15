@@ -1,6 +1,7 @@
 import type {
   ResumeContact,
   Resume as ResumeData,
+  ResumeEducationItem,
   ResumeExperienceItem,
 } from "@/models/resume";
 import { cn } from "@/utils/styles";
@@ -21,6 +22,10 @@ interface SkillsProps extends ComponentPropsWithoutRef<"div"> {
 
 interface ExperienceProps {
   data: ResumeExperienceItem;
+}
+
+interface EducationProps {
+  data: ResumeEducationItem;
 }
 
 const Heading: FC<ComponentPropsWithoutRef<"h1">> = (props) => {
@@ -100,9 +105,33 @@ const Experience: FC<ExperienceProps> = (props) => {
   );
 };
 
+const Education: FC<EducationProps> = (props) => {
+  const { data } = props;
+  const { date, title, specialty } = data;
+  return (
+    <div className="flex">
+      <div className="flex min-w-48 max-w-48 flex-col text-sm text-neutral-600">
+        <p>{date}</p>
+      </div>
+      <div className="flex flex-col text-sm">
+        <p className="font-semibold">{title}</p>
+        <p className="mt-0.5 leading-[normal] text-neutral-600">{specialty}</p>
+      </div>
+    </div>
+  );
+};
+
 const Resume: FC<Props> = (props) => {
   const { data } = props;
-  const { firstName, lastName, contacts, about, skills, experience } = data;
+  const {
+    firstName,
+    lastName,
+    contacts,
+    about,
+    skills,
+    experience,
+    education,
+  } = data;
   return (
     <div className="mx-auto max-w-3xl bg-white p-8 shadow-lg print:p-0 print:shadow-none">
       <div className="flex items-center justify-between">
@@ -135,6 +164,12 @@ const Resume: FC<Props> = (props) => {
       <div className="mt-2 flex flex-col gap-y-3">
         {experience.content.map((data, idx) => (
           <Experience key={idx} data={data} />
+        ))}
+      </div>
+      <Heading>{education.title}</Heading>
+      <div className="mt-2 flex flex-col gap-y-3">
+        {education.content.map((data, idx) => (
+          <Education key={idx} data={data} />
         ))}
       </div>
     </div>
