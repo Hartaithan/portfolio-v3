@@ -17,7 +17,7 @@ const ResumeSection: FC = () => {
   return (
     <main
       id="resume"
-      className="size-full overflow-auto bg-gray-100 p-4 font-sans print:bg-transparent print:p-0">
+      className="size-full overflow-auto bg-gray-100 p-2 font-sans md:p-4 print:bg-transparent print:p-0">
       <Resume data={resume[language]} />
       <div className="fixed bottom-8 right-8 flex gap-x-2 print:hidden">
         <button
