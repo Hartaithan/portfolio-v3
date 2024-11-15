@@ -1,4 +1,9 @@
-import type { ResumeContact, Resume as ResumeData } from "@/models/resume";
+import type {
+  ResumeContact,
+  Resume as ResumeData,
+  ResumeExperienceItem,
+} from "@/models/resume";
+import { cn } from "@/utils/styles";
 import type { ComponentPropsWithoutRef, FC } from "react";
 
 interface Props {
@@ -13,6 +18,20 @@ interface SkillsProps extends ComponentPropsWithoutRef<"div"> {
   title?: string;
   data: string[];
 }
+
+interface ExperienceProps {
+  data: ResumeExperienceItem;
+}
+
+const Heading: FC<ComponentPropsWithoutRef<"h1">> = (props) => {
+  const { className, children } = props;
+  return (
+    <h1
+      className={cn("mt-3 text-lg font-semibold leading-[normal]", className)}>
+      {children}
+    </h1>
+  );
+};
 
 const Contacts: FC<ContactsProps> = (props) => {
   const { data } = props;
@@ -51,16 +70,39 @@ const Skills: FC<SkillsProps> = (props) => {
       {data.map((skill, idx) => (
         <div key={idx} className="flex items-center">
           <div className="relative top-2 mr-2 size-1 self-start bg-black print:bg-black" />
-          <p className="text-sm">{skill}</p>
+          <p className="text-xs">{skill}</p>
         </div>
       ))}
     </div>
   );
 };
 
+const Experience: FC<ExperienceProps> = (props) => {
+  const { data } = props;
+  const { date, duration, title, description, position, tags } = data;
+  return (
+    <div className="flex">
+      <div className="flex min-w-48 max-w-48 flex-col text-sm text-neutral-600">
+        <p>{date}</p>
+        {duration.length > 0 && <p>({duration})</p>}
+      </div>
+      <div className="flex flex-col text-sm">
+        <p className="font-semibold">{title}</p>
+        <div className="flex items-center text-neutral-600">
+          <p className="underline">{position}</p>
+          <p className="ml-1 text-xs leading-[normal]">({tags.join(", ")})</p>
+        </div>
+        <p className="mt-0.5 leading-[normal] text-neutral-600">
+          {description}
+        </p>
+      </div>
+    </div>
+  );
+};
+
 const Resume: FC<Props> = (props) => {
   const { data } = props;
-  const { firstName, lastName, contacts, about, skills } = data;
+  const { firstName, lastName, contacts, about, skills, experience } = data;
   return (
     <div className="mx-auto max-w-3xl bg-white p-8 shadow-lg print:p-0 print:shadow-none">
       <div className="flex items-center justify-between">
@@ -70,7 +112,7 @@ const Resume: FC<Props> = (props) => {
         </div>
         <Contacts data={contacts} />
       </div>
-      <h1 className="mt-3 text-xl font-semibold">{about.title}</h1>
+      <Heading>{about.title}</Heading>
       <div className="mt-2 flex flex-col gap-y-2">
         {about.content.map((line, idx) => (
           <p key={idx} className="indent-4 text-sm leading-[normal]">
@@ -78,20 +120,22 @@ const Resume: FC<Props> = (props) => {
           </p>
         ))}
       </div>
-      <h1 className="mt-3 text-xl font-semibold">{skills.title}</h1>
-      <div className="mt-2 grid grid-flow-col grid-rows-3 gap-3">
+      <Heading>{skills.title}</Heading>
+      <div className="mt-2 grid grid-flow-col grid-rows-2 gap-x-3">
         <Skills
           className="row-span-3"
           title="Frontend"
           data={skills.frontend}
         />
         <Skills className="row-span-3" data={skills.moreFrontend} />
-        <Skills className="col-span-2" title="Mobile" data={skills.mobile} />
-        <Skills
-          className="col-span-2 row-span-2"
-          title="Backend"
-          data={skills.backend}
-        />
+        <Skills title="Mobile" data={skills.mobile} />
+        <Skills title="Backend" data={skills.backend} />
+      </div>
+      <Heading>{experience.title}</Heading>
+      <div className="mt-2 flex flex-col gap-y-3">
+        {experience.content.map((data, idx) => (
+          <Experience key={idx} data={data} />
+        ))}
       </div>
     </div>
   );

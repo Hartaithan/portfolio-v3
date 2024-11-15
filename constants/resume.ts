@@ -63,6 +63,41 @@ export const ru: Resume = {
     title: "Навыки",
     ...skills,
   },
+  experience: {
+    title: "Опыт",
+    content: [
+      {
+        title: "ООО “Двигус”",
+        description:
+          "Отвечал за разработку системы управления подбором. В нее входили веб-приложение для работы операторов, интеграция сервиса обзвона и админ. панель",
+        location: "г. Москва",
+        position: "Frontend разработчик",
+        tags: ["React"],
+        date: "Октябрь 2023 – по н.в.",
+        duration: "",
+      },
+      {
+        title: "ООО “Квантум”",
+        description:
+          "Был частью команды разработки C2B2C платформы. Руководил разработкой клиенто-ориентированной части платформы, в нее входили веб-приложение на Next.js и мобильное приложение на React Native",
+        location: "г. Якутск",
+        position: "Frontend разработчик",
+        tags: ["React", "Next.JS", "React Native"],
+        date: "Июнь 2022 - Август 2023",
+        duration: "1 год 1 месяц",
+      },
+      {
+        title: "ООО “АЭБ АйТи”",
+        description:
+          "В составе команды разрабатывал медицинский портал на Next.JS и его админ. панель на React",
+        location: "г. Якутск",
+        position: "Frontend разработчик",
+        tags: ["React", "Next.JS"],
+        date: "Май 2021 - Май 2022",
+        duration: "1 год",
+      },
+    ],
+  },
 };
 
 export const en: Resume = {
@@ -86,6 +121,41 @@ export const en: Resume = {
   skills: {
     title: "About",
     ...skills,
+  },
+  experience: {
+    title: "Experience",
+    content: [
+      {
+        title: "Dvigus",
+        description:
+          "I was responsible for developing a recruitment management system, which included a web application for operator workflows, integration with a call service, and an admin panel",
+        location: "Russia, Moscow",
+        position: "Frontend Developer",
+        tags: ["React"],
+        date: "October 2023 – present",
+        duration: "",
+      },
+      {
+        title: "Qwantum",
+        description:
+          "I was part of the team developing a C2B2C platform, where I led the development of the client-oriented parts, including a Next.js web application and a React Native mobile app",
+        location: "Russia, Yakutsk",
+        position: "Frontend Developer",
+        tags: ["React", "Next.JS", "React Native"],
+        date: "June 2022 - August 2023",
+        duration: "1 year 1 month",
+      },
+      {
+        title: "AEB IT",
+        description:
+          "As part of the team, I developed a medical portal on Next.js and its admin panel on React",
+        location: "Russia, Yakutsk",
+        position: "Frontend Developer",
+        tags: ["React", "Next.JS"],
+        date: "May 2021 - May 2022",
+        duration: "1 year",
+      },
+    ],
   },
 };
 
