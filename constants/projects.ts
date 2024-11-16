@@ -2,6 +2,101 @@ import type { ProjectItem } from "@/models/project";
 
 export const projects: ProjectItem[] = [
   {
+    id: "platinum-calendar",
+    label: "Platinum Calendar",
+    category: "Web App | Next.JS",
+    description:
+      "An app for visualizing a collection of Platinum Trophies. Users can generate a personalized calendar showcasing their trophies and easily save or share it by simply entering their username. The app features multiple themes and allows filtering trophies by the year they were earned",
+    image: "/projects/platinum-calendar.webp",
+    tags: ["Next.JS", "Data Visualization", "TailwindCSS", "Cheerio"],
+    links: [
+      {
+        icon: "github",
+        href: "https://github.com/Hartaithan/platinum-calendar",
+      },
+      {
+        icon: "external",
+        href: "https://platinum-calendar.vercel.app",
+      },
+    ],
+  },
+  {
+    id: "trophy-hunt-template",
+    label: "Trophy Hunt Template",
+    category: "Web App | Next.JS | Notion Template",
+    description:
+      "A Notion template designed for managing a Platinum Trophy backlog. To streamline the process, it includes a companion app for efficient data management. The app enables users to easily search for and add their desired games, seamlessly integrating with the template via the Notion API",
+    image: "/projects/trophy-hunt-template.webp",
+    tags: ["Next.JS", "Notion API", "Mantine", "Cheerio"],
+    links: [
+      {
+        icon: "github",
+        href: "https://github.com/Hartaithan/trophy-hunt-template",
+      },
+      {
+        icon: "external",
+        href: "https://trophy-hunt-template.vercel.app",
+      },
+    ],
+  },
+  {
+    id: "a-z",
+    label: "A-Z",
+    description:
+      "A small alphabet-based text puzzle game, written in Kotlin. The Volley library handles HTTP requests for the online leaderboard",
+    category: "Mobile Game | Android",
+    image: "/projects/a-z.webp",
+    tags: ["Android", "Kotlin", "Volley"],
+    links: [
+      {
+        icon: "google-play",
+        href: "https://play.google.com/store/apps/details?id=com.hartaithan.a_z",
+      },
+      {
+        icon: "external",
+        href: "https://hartaithan.github.io/a-z",
+      },
+    ],
+  },
+  {
+    id: "image-aware-background",
+    label: "Image Aware Background",
+    category: "Web App | Vue",
+    description:
+      "An app that extracts the primary and five most frequently used colors from an uploaded image, implemented using the Canvas API",
+    image: "/projects/image-aware-background.webp",
+    tags: ["Vue", "TypeScript", "Canvas API"],
+    links: [
+      {
+        icon: "github",
+        href: "https://github.com/Hartaithan/image-aware-background",
+      },
+      {
+        icon: "external",
+        href: "https://image-aware-background.vercel.app",
+      },
+    ],
+  },
+  {
+    id: "trophy-list-fetcher",
+    label: "Trophy List Fetcher",
+    category: "Web App | Next.JS",
+    description:
+      "A tool designed to fetch trophy lists from PSNProfiles by parsing, or directly from the PSN API with authorization. This app automates trophy list imports",
+    image: "/projects/trophy-list-fetcher.webp",
+    tags: ["Next.JS", "PSN", "Automation", "Cheerio"],
+    links: [
+      {
+        icon: "github",
+        href: "https://github.com/Hartaithan/trophy-list-fetcher",
+      },
+      {
+        icon: "external",
+        href: "https://trophy-list-fetcher.vercel.app",
+      },
+    ],
+  },
+  {
     id: "breeween",
     label: "Breeween",
     category: "Web App | Angular",
@@ -65,63 +160,6 @@ export const projects: ProjectItem[] = [
     ],
   },
   {
-    id: "trophy-list-fetcher",
-    label: "Trophy List Fetcher",
-    category: "Web App | Next.JS",
-    description:
-      "A tool designed to fetch trophy lists from PSNProfiles by parsing, or directly from the PSN API with authorization. This app automates trophy list imports",
-    image: "/projects/trophy-list-fetcher.webp",
-    tags: ["Next.JS", "PSN", "Automation", "Cheerio"],
-    links: [
-      {
-        icon: "github",
-        href: "https://github.com/Hartaithan/trophy-list-fetcher",
-      },
-      {
-        icon: "external",
-        href: "https://trophy-list-fetcher.vercel.app",
-      },
-    ],
-  },
-  {
-    id: "image-aware-background",
-    label: "Image Aware Background",
-    category: "Web App | Vue",
-    description:
-      "An app that extracts the primary and five most frequently used colors from an uploaded image, implemented using the Canvas API",
-    image: "/projects/image-aware-background.webp",
-    tags: ["Vue", "TypeScript", "Canvas API"],
-    links: [
-      {
-        icon: "github",
-        href: "https://github.com/Hartaithan/image-aware-background",
-      },
-      {
-        icon: "external",
-        href: "https://image-aware-background.vercel.app",
-      },
-    ],
-  },
-  {
-    id: "next-posts",
-    label: "Next Posts",
-    category: "Web App | Next.JS",
-    description:
-      "A simple news website where authorized users can create posts, rate them, and leave comments. User authentication is done via Magic Link, posts are stored in Supabase, and the UI is built with Mantine",
-    image: "/projects/next-posts.webp",
-    tags: ["Next.JS", "SSR", "Mantine", "Supabase", "Cloudinary", "Magic Link"],
-    links: [
-      {
-        icon: "github",
-        href: "https://github.com/Hartaithan/next-posts",
-      },
-      {
-        icon: "external",
-        href: "https://next-posts-hartaithan.vercel.app",
-      },
-    ],
-  },
-  {
     id: "image-editor",
     label: "Image Editor",
     category: "Web App | Vue",
@@ -163,25 +201,6 @@ export const projects: ProjectItem[] = [
       {
         icon: "external",
         href: "https://camo-tracker-hartaithan.vercel.app",
-      },
-    ],
-  },
-  {
-    id: "a-z",
-    label: "A-Z",
-    description:
-      "A small alphabet-based text puzzle game, written in Kotlin. The Volley library handles HTTP requests for the online leaderboard",
-    category: "Mobile Game | Android",
-    image: "/projects/a-z.webp",
-    tags: ["Android", "Kotlin", "Volley"],
-    links: [
-      {
-        icon: "google-play",
-        href: "https://play.google.com/store/apps/details?id=com.hartaithan.a_z",
-      },
-      {
-        icon: "external",
-        href: "https://hartaithan.github.io/a-z",
       },
     ],
   },
