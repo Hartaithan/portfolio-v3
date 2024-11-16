@@ -2,34 +2,71 @@
 
 import Resume from "@/components/resume";
 import { resume } from "@/constants/resume";
+import IconAlphabetCyrillic from "@/icons/alphabet-cyrillic";
+import IconAlphabetLatin from "@/icons/alphabet-latin";
+import IconDownload from "@/icons/download";
+import IconPrint from "@/icons/print";
 import type { Language } from "@/models/language";
+import { cn } from "@/utils/styles";
+import type { ComponentPropsWithoutRef } from "react";
 import { useCallback, useState, type FC } from "react";
+
+const Button: FC<ComponentPropsWithoutRef<"button">> = (props) => {
+  const { className, children, ...rest } = props;
+  return (
+    <button
+      className={cn(
+        "flex min-w-0 flex-1 items-center gap-x-2 rounded-md px-2.5 py-2 md:min-w-28 md:flex-none",
+        "bg-neutral-800/80 text-sm font-medium text-white hover:bg-neutral-800",
+        "transition-all duration-300 ease-in-out",
+        className,
+      )}
+      {...rest}>
+      {children}
+    </button>
+  );
+};
 
 const ResumeSection: FC = () => {
   const [language, setLanguage] = useState<Language>("ru");
 
-  const handleDownload = useCallback(() => window.print(), []);
+  const handleDownload = useCallback(() => {
+    const file = `cv-frontend-stepanov-vladimir-${language}.pdf`;
+    const link = document.createElement("a");
+    link.href = file;
+    link.download = file;
+    link.click();
+    link.remove();
+  }, [language]);
 
-  const handleLanguage = useCallback(() => {
-    setLanguage((prev) => (prev === "en" ? "ru" : "en"));
-  }, []);
+  const handlePrint = useCallback(() => window.print(), []);
+
+  const handleEnglish = useCallback(() => setLanguage("en"), []);
+
+  const handleRussian = useCallback(() => setLanguage("ru"), []);
 
   return (
     <main
       id="resume"
-      className="size-full overflow-auto bg-gray-100 p-2 font-sans md:p-4 print:bg-transparent print:p-0">
+      className="size-full overflow-auto bg-gray-100 p-2 pb-28 font-sans md:p-4 md:pb-20 print:bg-transparent print:p-0">
       <Resume data={resume[language]} />
-      <div className="fixed bottom-8 right-8 flex gap-x-2 print:hidden">
-        <button
-          className="rounded bg-neutral-800 px-2 py-1 text-sm text-white"
-          onClick={handleDownload}>
+      <div className="fixed bottom-4 left-2/4 grid w-11/12 -translate-x-2/4 grid-cols-2 gap-x-2 gap-y-2 sm:w-max md:grid-cols-4 print:hidden">
+        <Button onClick={handleDownload}>
+          <IconDownload className="size-5 min-w-5" />
           Download
-        </button>
-        <button
-          className="rounded bg-neutral-800 px-2 py-1 text-sm text-white"
-          onClick={handleLanguage}>
-          Language
-        </button>
+        </Button>
+        <Button onClick={handlePrint}>
+          <IconPrint className="size-5 min-w-5" />
+          Print
+        </Button>
+        <Button onClick={handleEnglish}>
+          <IconAlphabetLatin className="size-5 min-w-5" />
+          English
+        </Button>
+        <Button onClick={handleRussian}>
+          <IconAlphabetCyrillic className="size-5 min-w-5" />
+          Русский
+        </Button>
       </div>
     </main>
   );
