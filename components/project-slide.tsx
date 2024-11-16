@@ -39,10 +39,10 @@ const ProjectSlide: FC<Props> = (props) => {
           "relative mt-3 flex w-full flex-col items-center self-auto lg:absolute lg:mt-0 lg:w-8/12",
           isEven ? "lg:items-start lg:self-start" : "lg:items-end lg:self-end",
         )}>
-        <h1 className="text-xl font-semibold md:text-2xl lg:text-3xl">
+        <h1 className="text-shadow text-xl font-semibold drop-shadow md:text-2xl lg:text-3xl">
           {id}. {label}
         </h1>
-        <p className="text-sm font-semibold md:text-base lg:text-lg">
+        <p className="text-shadow text-sm font-semibold drop-shadow md:text-base lg:text-lg">
           {category}
         </p>
         <p className="mt-2 rounded-lg bg-neutral-900/90 px-4 py-3 text-xs leading-snug md:text-base lg:px-5 lg:py-4 2xl:text-lg">

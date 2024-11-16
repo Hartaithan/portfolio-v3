@@ -2,31 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #000000;
-  --foreground: #ffffff;
+@layer base {
+  :root {
+    --background: #000000;
+    --foreground: #ffffff;
+  }
+
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+  }
+
+  body {
+    color: var(--foreground);
+    background: var(--background);
+  }
+
+  body:has(#resume) {
+    display: flex;
+    flex-direction: column;
+    color: var(--background);
+    background: var(--foreground);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #slide[data-motion-pop-id] {
+    position: fixed !important;
+  }
 }
 
-html,
-body {
-  height: 100%;
-  width: 100%;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-}
-
-body:has(#resume) {
-  display: flex;
-  flex-direction: column;
-  color: var(--background);
-  background: var(--foreground);
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
-}
-
-#slide[data-motion-pop-id] {
-  position: fixed !important;
+@layer utilities {
+  .text-shadow {
+    text-shadow: 1px 1px 2px #000000;
+  }
 }
