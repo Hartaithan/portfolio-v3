@@ -7,7 +7,7 @@ export const projects: ProjectItem[] = [
     category: "Web App | Next.JS",
     description:
       "An app for visualizing a collection of Platinum Trophies. Users can generate a personalized calendar showcasing their trophies and easily save or share it by simply entering their username. The app features multiple themes and allows filtering trophies by the year they were earned",
-    image: "/projects/platinum-calendar.webp",
+    image: "./projects/platinum-calendar.webp",
     tags: ["Next.JS", "Data Visualization", "TailwindCSS", "Cheerio"],
     links: [
       {
@@ -26,7 +26,7 @@ export const projects: ProjectItem[] = [
     category: "Web App | Next.JS | Notion Template",
     description:
       "A Notion template designed for managing a Platinum Trophy backlog. To streamline the process, it includes a companion app for efficient data management. The app enables users to easily search for and add their desired games, seamlessly integrating with the template via the Notion API",
-    image: "/projects/trophy-hunt-template.webp",
+    image: "./projects/trophy-hunt-template.webp",
     tags: ["Next.JS", "Notion API", "Mantine", "Cheerio"],
     links: [
       {
@@ -45,7 +45,7 @@ export const projects: ProjectItem[] = [
     description:
       "A small alphabet-based text puzzle game, written in Kotlin. The Volley library handles HTTP requests for the online leaderboard",
     category: "Mobile Game | Android",
-    image: "/projects/a-z.webp",
+    image: "./projects/a-z.webp",
     tags: ["Android", "Kotlin", "Volley"],
     links: [
       {
@@ -64,7 +64,7 @@ export const projects: ProjectItem[] = [
     category: "Web App | Vue",
     description:
       "An app that extracts the primary and five most frequently used colors from an uploaded image, implemented using the Canvas API",
-    image: "/projects/image-aware-background.webp",
+    image: "./projects/image-aware-background.webp",
     tags: ["Vue", "TypeScript", "Canvas API"],
     links: [
       {
@@ -83,7 +83,7 @@ export const projects: ProjectItem[] = [
     category: "Web App | Next.JS",
     description:
       "A tool designed to fetch trophy lists from PSNProfiles by parsing, or directly from the PSN API with authorization. This app automates trophy list imports",
-    image: "/projects/trophy-list-fetcher.webp",
+    image: "./projects/trophy-list-fetcher.webp",
     tags: ["Next.JS", "PSN", "Automation", "Cheerio"],
     links: [
       {
@@ -102,7 +102,7 @@ export const projects: ProjectItem[] = [
     category: "Web App | Angular",
     description:
       "A practice project in Angular for building a web audio player. Users can add recordings to a Firebase Database. The audio player supports rewinding, volume control, and pause/resume functions. Audio control logic is encapsulated in a dedicated service",
-    image: "/projects/breeween.webp",
+    image: "./projects/breeween.webp",
     tags: ["Angular", "Firebase", "Audio Player", "Material Table"],
     links: [
       {
@@ -121,7 +121,7 @@ export const projects: ProjectItem[] = [
     category: "Web App | Nuxt",
     description:
       "A project to practice with Nuxt, using SSR (Server-Side Rendering) for efficient page rendering. Pagination is handled through query parameters, and the UI is styled with Tailwind CSS",
-    image: "/projects/ramutable.webp",
+    image: "./projects/ramutable.webp",
     tags: ["Vue", "Nuxt.JS", "Tailwind", "SSR"],
     links: [
       {
@@ -140,7 +140,7 @@ export const projects: ProjectItem[] = [
     category: "Web App | Angular",
     description:
       "An Angular project utilizing Apollo Client for data fetching. The app provides two views: Table and Cards, both equipped with Infinite Scroll",
-    image: "/projects/dimension-c137.webp",
+    image: "./projects/dimension-c137.webp",
     tags: [
       "Angular",
       "Apollo Client",
@@ -165,7 +165,7 @@ export const projects: ProjectItem[] = [
     category: "Web App | Vue",
     description:
       "A web-based version of the Snipping Tool. Users can upload image, annotate them, and save edited image. Import and export work from both files and the clipboard",
-    image: "/projects/image-editor.webp",
+    image: "./projects/image-editor.webp",
     tags: ["Vue", "Vuex", "Canvas API"],
     links: [
       {
@@ -184,7 +184,7 @@ export const projects: ProjectItem[] = [
     description:
       "A Camo Tracker app for Black Ops Cold War, built with the MERN stack. JWT tokens handle authentication, user progress is managed by Redux, and data is stored in MongoDB. The design is optimized for both desktop and mobile",
     category: "Web App | React | Express",
-    image: "/projects/camo-tracker.webp",
+    image: "./projects/camo-tracker.webp",
     tags: [
       "Node.JS",
       "Express.JS",

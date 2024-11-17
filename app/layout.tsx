@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   keywords: ["portfolio", "frontend", "frontend developer"],
   robots: "all",
   metadataBase: new URL("https://hartaithan.github.io/portfolio-v3"),
+  manifest: "/portfolio-v3/manifest.json",
 };
 
 const RootLayout: FC<PropsWithChildren> = (props) => {
