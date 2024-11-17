@@ -67,7 +67,7 @@ const ProjectsSection: FC = () => {
         <motion.div
           id="slide"
           key={page}
-          className="relative flex h-full w-10/12 flex-col items-center justify-center md:w-9/12 2xl:w-7/12"
+          className="relative flex h-full w-10/12 flex-col items-center justify-center md:w-9/12 2xl:w-8/12"
           custom={direction}
           variants={variants}
           initial="enter"

@@ -21,7 +21,7 @@ const ProjectSlide: FC<Props> = (props) => {
     <>
       <div
         className={cn(
-          "pointer-events-none relative -z-10 flex h-auto w-full items-center justify-center md:h-2/5 lg:absolute lg:h-3/6 lg:w-auto lg:justify-start",
+          "pointer-events-none relative -z-10 flex h-auto w-full items-center justify-center md:h-2/5 lg:absolute lg:h-3/6 lg:w-9/12",
           isEven ? "self-end" : "self-start",
         )}>
         <div className="relative h-full w-11/12 sm:w-9/12 lg:w-full xl:w-auto">
