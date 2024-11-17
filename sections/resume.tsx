@@ -9,7 +9,7 @@ import IconPrint from "@/icons/print";
 import type { Language } from "@/models/language";
 import { cn } from "@/utils/styles";
 import type { ComponentPropsWithoutRef } from "react";
-import { useCallback, useState, type FC } from "react";
+import { useCallback, useMemo, useState, type FC } from "react";
 
 const Button: FC<ComponentPropsWithoutRef<"button">> = (props) => {
   const { className, children, ...rest } = props;
@@ -30,16 +30,25 @@ const Button: FC<ComponentPropsWithoutRef<"button">> = (props) => {
 const ResumeSection: FC = () => {
   const [language, setLanguage] = useState<Language>("ru");
 
+  const filename = useMemo(
+    () => `cv-frontend-stepanov-vladimir-${language}.pdf`,
+    [language],
+  );
+
   const handleDownload = useCallback(() => {
-    const file = `cv-frontend-stepanov-vladimir-${language}.pdf`;
     const link = document.createElement("a");
-    link.href = file;
-    link.download = file;
+    link.href = filename;
+    link.download = filename;
     link.click();
     link.remove();
-  }, [language]);
+  }, [filename]);
 
-  const handlePrint = useCallback(() => window.print(), []);
+  const handlePrint = useCallback(() => {
+    const prev = document.title;
+    document.title = filename;
+    window.print();
+    document.title = prev;
+  }, [filename]);
 
   const handleEnglish = useCallback(() => setLanguage("en"), []);
 
