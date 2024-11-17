@@ -11,6 +11,10 @@ export const metadata: Metadata = {
     default: "Hartaithan.",
   },
   description: "Hartaithan. Portfolio",
+  applicationName: "Hartaithan. Portfolio",
+  twitter: { card: "summary_large_image" },
+  keywords: ["portfolio", "frontend", "frontend developer"],
+  robots: "all",
 };
 
 const RootLayout: FC<PropsWithChildren> = (props) => {
