@@ -29,7 +29,7 @@ const ProjectSlide: FC<Props> = (props) => {
             fill
             unoptimized
             alt={`${label} project preview`}
-            className="!relative size-full object-contain"
+            className="!relative aspect-video size-full object-contain"
             src={image}
           />
         </div>
