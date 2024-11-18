@@ -11,9 +11,11 @@
     "lint:fix": "eslint --fix --ext ts,tsx .",
     "format": "npx prettier . --write",
     "types": "tsc --noemit",
-    "check": "npm run lint && npm run types"
+    "check": "npm run lint && npm run types",
+    "analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^15.0.3",
     "@react-three/drei": "^9.115.0",
     "@react-three/fiber": "^8.17.10",
     "clsx": "^2.1.1",
